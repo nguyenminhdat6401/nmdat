@@ -30,6 +30,7 @@ Mở file `index.html` để xem trực tiếp website.
 Clone project:
 ```bash
 git clone https://github.com/nguyenminhdat6401/nmdat.git
+```bash
 
 ---
 ## 📬 Connect
