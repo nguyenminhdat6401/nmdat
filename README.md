@@ -26,6 +26,12 @@ Mở file `index.html` để xem trực tiếp website.
 
 ---
 
+## Connect with me
+
+**Email:** [nguyenminhdat6401@gmail.com](mailto:nguyenminhdat6401@gmail.com) • [![Portfolio](https://img.shields.io/badge/Portfolio-111827?style=flat-square&logo=firefox&logoColor=a7ffeb)](https://nguyenminhdat6401.github.io/nmdat/) [![GitHub](https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=f48fb1)](https://www.linkedin.com/in/datnguyenminh6401/)
+
+---
+
 ## Cách sử dụng
 Clone project:
 ```bash
@@ -33,9 +39,5 @@ git clone https://github.com/nguyenminhdat6401/nmdat.git
 
 
 ---
-### 📬 Connect with me
 
-**Email:** [nguyenminhdat6401@gmail.com](mailto:nguyenminhdat6401@gmail.com) • [![Portfolio](https://img.shields.io/badge/Portfolio-111827?style=flat-square&logo=firefox&logoColor=a7ffeb)](https://nguyenminhdat6401.github.io/nmdat/) [![GitHub](https://img.shields.io/badge/GitHub-000000?style=flat-square&logo=github&logoColor=f48fb1)](https://www.linkedin.com/in/datnguyenminh6401/)
-
----
 
