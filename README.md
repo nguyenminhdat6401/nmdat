@@ -29,4 +29,4 @@ Mở file `index.html` để xem trực tiếp website.
 ## 💡 Cách sử dụng
 Clone project:
 ```bash
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/nguyenminhdat6401/nmdat.git
