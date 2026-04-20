@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nmdat | AI</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: { green: '#00ff88', purple: '#b829f7', cyan: '#00d9ff' },
+                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0f; color: #ffffff; }
+        .bg-fixed-img {
+            position: fixed; inset: 0; z-index: -1;
+            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            filter: blur(10px) brightness(0.25); transform: scale(1.1);
+        }
+        .glass { background: rgba(18, 18, 26, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .blog-container { background: rgba(10, 10, 15, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(184, 41, 247, 0.2); }
+        .gradient-text { background: linear-gradient(135deg, #b829f7 0%, #00d9ff 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .prose p { color: #d1d5db; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .prose h2 { color: #b829f7; font-weight: 700; font-size: 1.875rem; margin-top: 2.5rem; margin-bottom: 1.25rem; font-family: 'JetBrains Mono', monospace; }
+        code { font-family: 'JetBrains Mono', monospace; background: rgba(184, 41, 247, 0.15); padding: 0.2rem 0.4rem; border-radius: 4px; color: #d483ff; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <div class="bg-fixed-img"></div>
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm font-mono">
+            <a href="index.html" class="text-gray-400 hover:text-neon-purple transition-colors flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                <span class="font-mono text-sm">Quay lại Portfolio</span>
+            </a>
+            <div class="font-mono font-bold text-white">
+                <span class="text-neon-green">&lt;</span>
+                <span class="gradient-text">nmdat</span>
+                <span class="text-neon-purple">/&gt;</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-24 px-6">
+        <article class="max-w-4xl mx-auto blog-container rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(184,41,247,0.1)]">
+            <header class="mb-12">
+                <span class="px-3 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-xs font-mono border border-neon-purple/20">AI</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-6 mb-8 leading-tight">
+                    AI sẽ thay thế bao nhiêu việc làm? <span class="gradient-text">Các mô hình dự báo nói gì</span>
+                </h1>
+                <div class="flex items-center gap-4 text-gray-400 font-mono text-sm">
+                    <i data-lucide="calendar" class="w-4 h-4"></i> 7.4.2026
+                    <span class="mx-2">|</span>
+                    <i data-lucide="clock" class="w-4 h-4"></i> 4 phút đọc
+                </div>
+
+                <div class="flex items-center gap-4 border-y border-white/10 py-6">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-neon-green to-neon-purple p-[2px]">
+                        <div class="w-full h-full rounded-full bg-dark-900 flex items-center justify-center">
+                            <i data-lucide="user" class="w-7 h-7 text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-lg">Nguyễn Minh Đạt</p>
+                        <p class="text-neon-cyan font-mono text-xs uppercase tracking-widest">nmdat</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="prose max-w-none">
+                <p>300 triệu việc làm bị xóa sổ hay chỉ 2.5%? Tuỳ bạn hỏi ai — và quan trọng hơn, tuỳ họ đang đo cái gì. Đây là lý do tại sao các con số chênh nhau đến vậy, và con số nào đáng tin hơn.</p>
+                
+                <h2>Vấn đề với các dự báo</h2>
+                <p>Nếu bạn tìm kiếm "AI sẽ thay thế bao nhiêu việc làm", bạn sẽ thấy những con số trông rất mâu thuẫn: Goldman Sachs nói 300 triệu, WEF nói mất 92 triệu nhưng tạo ra 170 triệu, McKinsey nói 57% số giờ làm việc có thể tự động hóa, trong khi Goldman Sachs cũng... nói chỉ 2.5% việc làm Mỹ thực sự có nguy cơ hiện tại.</p>
+                <p>Không ai nói sai. Họ đang đo những thứ khác nhau.</p>
+                <div class="glass p-8 rounded-2xl border border-neon-purple/20 my-10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-neon-purple/5 rounded-full blur-3xl"></div>
+                    
+                    <h4 class="text-neon-purple font-mono text-sm mb-6 flex items-center gap-2">
+                        <i data-lucide="binary" class="w-4 h-4"></i>
+                        PHÂN BIỆT CÁC KHÁI NIỆM CỐT LÕI
+                    </h4>
+                
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="mt-1"><i data-lucide="toggle-right" class="w-5 h-5 text-neon-cyan"></i></div>
+                            <div>
+                                <p class="text-white font-bold text-base">Task Automation</p>
+                                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                    Tự động hóa một phần công việc trong một nghề. <span class="text-neon-cyan/80 italic">Ví dụ: AI viết email thay luật sư, nhưng luật sư vẫn đảm nhận các phần việc cốt lõi khác.</span>
+                                </p>
+                            </div>
+                        </div>
+                
+                        <div class="flex gap-4">
+                            <div class="mt-1"><i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i></div>
+                            <div>
+                                <p class="text-white font-bold text-base">Job Displacement</p>
+                                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                    Sự dịch chuyển hoặc xóa sổ hoàn toàn một vị trí công việc do công nghệ thay thế nhân lực trực tiếp.
+                                </p>
+                            </div>
+                        </div>
+                
+                        <div class="flex gap-4">
+                            <div class="mt-1"><i data-lucide="refresh-ccw" class="w-5 h-5 text-neon-green"></i></div>
+                            <div>
+                                <p class="text-white font-bold text-base">Net Job Change</p>
+                                <p class="text-gray-400 text-sm mt-1 leading-relaxed">
+                                    Chỉ số thực tế sau khi lấy số lượng việc làm mới được tạo ra trừ đi số lượng việc làm bị mất đi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Con số từ các mô hình lớn</h2>
+                <div class="space-y-4 my-10 scroll-reveal">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        
+                        <div class="glass p-5 rounded-2xl border border-neon-purple/20 bg-neon-purple/5 group hover:bg-neon-purple/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">Goldman Sachs (2025)</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-neon-purple transition-colors">300M</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">việc làm toàn cầu bị ảnh hưởng bởi gen AI</p>
+                        </div>
+                
+                        <div class="glass p-5 rounded-2xl border border-red-500/20 bg-red-500/5 group hover:bg-red-500/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">WEF Future of Jobs</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-red-400 transition-colors">92M</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">việc làm bị thay thế đến 2030</p>
+                        </div>
+                
+                        <div class="glass p-5 rounded-2xl border border-neon-green/20 bg-neon-green/5 group hover:bg-neon-green/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">WEF (Tạo ra mới)</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-neon-green transition-colors">170M</span>
+                                <i data-lucide="trending-up" class="w-4 h-4 text-neon-green opacity-50"></i>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">việc làm mới xuất hiện đến 2030</p>
+                        </div>
+                
+                        <div class="glass p-5 rounded-2xl border border-neon-cyan/20 bg-neon-cyan/5 group hover:bg-neon-cyan/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">McKinsey (2025)</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-neon-cyan transition-colors">57%</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">số giờ làm việc có thể tự động hóa</p>
+                        </div>
+                    </div>
+                
+                    <div class="px-2 opacity-40 hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                            * Nguồn: Goldman Sachs Research (2025); WEF Future of Jobs Report 2025; McKinsey Global Institute (late 2025) qua ALMcorp.com
+                        </p>
+                    </div>
+                </div>
+
+                <p>Con số 300 triệu của Goldman Sachs không có nghĩa là 300 triệu người mất việc. Nó bao gồm cả những người chỉ thấy một phần công việc của mình thay đổi — tức "affected" theo nghĩa rộng nhất. Một luật sư dùng AI để tra cứu nhanh hơn vẫn được tính vào con số này.</p>
+                
+                <h2>Nghề nào có nguy cơ cao nhất?</h2>
+                <p>Các nghiên cứu nhất quán ở một điểm: công việc có nguy cơ cao là những việc có thể mô tả thành quy tắc rõ ràng, lặp đi lặp lại, và xử lý thông tin theo khuôn mẫu.</p>
+                
+                <div class="glass p-8 rounded-2xl border border-white/5 my-10 scroll-reveal">
+                    <div class="mb-8">
+                        <h4 class="text-white font-bold text-lg mb-2">Xác suất tự động hóa theo ngành nghề</h4>
+                        <p class="text-gray-400 text-sm">Tỷ lệ các nhiệm vụ có thể bị thay thế hoặc hỗ trợ mạnh mẽ bởi GenAI (2025-2030)</p>
+                    </div>
+                
+                    <div class="space-y-6">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Nhập liệu, xử lý dữ liệu</span>
+                                <span class="text-red-500 font-mono text-sm font-bold">95%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.5)] transition-all duration-1000" style="width: 95%"></div>
+                            </div>
+                        </div>
+                
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Chăm sóc khách hàng</span>
+                                <span class="text-orange-500 font-mono text-sm font-bold">80%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-orange-500 rounded-full shadow-[0_0_10px_rgba(249,115,22,0.5)] transition-all duration-1000" style="width: 80%"></div>
+                            </div>
+                        </div>
+                
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Trợ lý pháp lý (Paralegal)</span>
+                                <span class="text-orange-500 font-mono text-sm font-bold">80%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-orange-500 rounded-full shadow-[0_0_10px_rgba(249,115,22,0.5)] transition-all duration-1000" style="width: 80%"></div>
+                            </div>
+                        </div>
+                
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Kế toán, kiểm toán cơ bản</span>
+                                <span class="text-yellow-500 font-mono text-sm font-bold">65%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-all duration-1000" style="width: 65%"></div>
+                            </div>
+                        </div>
+                
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Lập trình viên (Entry-level)</span>
+                                <span class="text-neon-cyan font-mono text-sm font-bold">60%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-neon-cyan rounded-full shadow-[0_0_10px_rgba(0,217,255,0.5)] transition-all duration-1000" style="width: 60%"></div>
+                            </div>
+                        </div>
+                
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Tư vấn tài chính cá nhân</span>
+                                <span class="text-neon-purple font-mono text-sm font-bold">20%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-neon-purple rounded-full shadow-[0_0_10_rgba(184,41,247,0.5)] transition-all duration-1000" style="width: 20%"></div>
+                            </div>
+                        </div>
+                
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-300 text-sm font-medium">Y tá, điều dưỡng</span>
+                                <span class="text-neon-green font-mono text-sm font-bold">10%</span>
+                            </div>
+                            <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-neon-green rounded-full shadow-[0_0_10px_rgba(0,255,136,0.5)] transition-all duration-1000" style="width: 10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-2 opacity-40 hover:opacity-100 transition-opacity duration-300">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: The World Data, tổng hợp từ Goldman Sachs, McKinsey, WEF (tháng 3/2026); Oxford University (Frey & Osborne)
+                    </p>
+                </div>
+                
+                <h2>Điều thú vị: AI đang "giảm tuyển dụng" hơn là "sa thải"</h2>
+                <p>Đây là phát hiện quan trọng nhất từ dữ liệu thực tế năm 2025–2026, và nó khác xa những gì các mô hình lý thuyết dự báo.</p>
+                <div class="glass p-8 rounded-2xl border-l-4 border-l-neon-purple border-r border-y border-white/5 my-10 relative overflow-hidden scroll-reveal">
+                    <div class="absolute -right-4 -bottom-4 opacity-5">
+                        <i data-lucide="users" class="w-32 h-32 text-neon-purple"></i>
+                    </div>
+                
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="px-3 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-[10px] font-mono border border-neon-purple/20 uppercase tracking-widest">
+                                Deep Insight
+                            </span>
+                            <div class="h-[1px] flex-grow bg-white/10"></div>
+                        </div>
+                
+                        <div class="space-y-6">
+                            <p class="text-lg md:text-xl text-gray-200 leading-relaxed italic">
+                                "Goldman Sachs ghi nhận: tỷ lệ thất nghiệp ở nhóm <span class="text-white font-bold underline decoration-neon-purple/50">20–30 tuổi</span> làm việc trong ngành có độ phơi nhiễm AI cao đã tăng gần <span class="text-neon-purple font-black">3 điểm phần trăm</span> từ đầu 2025."
+                            </p>
+                
+                            <div class="glass bg-white/5 p-4 rounded-xl border border-white/10">
+                                <p class="text-sm text-gray-300 leading-relaxed">
+                                    <span class="text-neon-purple font-bold">Yale Budget Lab</span> cũng xác nhận: AI hiện đang <span class="text-white underline decoration-neon-cyan/50">kìm hãm tuyển dụng mới</span> hơn là sa thải người đang có việc — đặc biệt là ở các vị trí <span class="text-neon-cyan">entry-level</span>.
+                                </p>
+                            </div>
+                        </div>
+                
+                        <div class="mt-8 flex items-start gap-2 opacity-40 hover:opacity-100 transition-opacity">
+                            <i data-lucide="link-2" class="w-3 h-3 text-gray-400 mt-1"></i>
+                            <p class="text-[9px] text-gray-400 font-sans italic leading-tight">
+                               * Nguồn: Goldman Sachs Research (tháng 8/2025); Yale Budget Lab — "Evaluating the Impact of AI on the Labor Market" (2026)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p>Nói đơn giản: công ty không cần thuê thêm người vì AI đã làm được phần đó. Hệ quả không phải là làn sóng sa thải ồ ạt — mà là thế hệ trẻ mới ra trường khó tìm việc hơn hẳn, trong khi người đang đi làm chưa thấy ảnh hưởng trực tiếp.</p>
+                 
+                <h2>Nhưng lịch sử nói gì?</h2>
+                <p>Đây là chỗ mà góc nhìn toán học thực sự hữu ích. Mỗi lần có công nghệ đột phá — máy dệt, điện khí hóa, máy tính cá nhân — người ta đều dự báo thảm họa việc làm. Kết quả thực tế luôn phức tạp hơn.</p>
+                <div class="glass p-8 rounded-2xl border border-white/5 my-10 relative overflow-hidden scroll-reveal">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="p-2 rounded-lg bg-neon-cyan/10">
+                            <i data-lucide="history" class="w-5 h-5 text-neon-cyan"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-lg uppercase tracking-tight">Bài học từ lịch sử nhiếp ảnh</h4>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
+                
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-2 text-amber-500/80 font-mono text-[10px] uppercase">
+                                <i data-lucide="camera" class="w-3 h-3"></i> 2004: Thời đại phim
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-4xl font-black text-white/90">86,300</span>
+                                <span class="text-xs text-gray-500 italic">thợ rửa phim</span>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Khi máy ảnh kỹ thuật số bắt đầu bùng nổ, vai trò của người thợ trong phòng tối dần trở nên lỗi thời.
+                            </p>
+                        </div>
+                
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-2 text-neon-cyan font-mono text-[10px] uppercase">
+                                <i data-lucide="aperture" class="w-3 h-3"></i> 2023: Kỷ nguyên Digital
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-4xl font-black text-neon-cyan">9,200</span>
+                                <span class="text-xs text-gray-500 italic">nhân sự cốt lõi</span>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-relaxed">
+                                Con số giảm mạnh đúng như dự báo, nhưng <span class="text-white font-bold">tổng việc làm nhiếp ảnh không mất đi</span> — nó chuyển hóa sang chỉnh sửa hậu kỳ, sáng tạo nội dung và vận hành AI.
+                            </p>
+                        </div>
+                    </div>
+                
+                    <div class="mt-8 pt-6 border-t border-white/5 flex items-center gap-3">
+                        <div class="bg-neon-cyan/20 p-2 rounded-full">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 text-neon-cyan animate-spin-slow"></i>
+                        </div>
+                        <p class="text-sm text-gray-300 italic">
+                            "Việc làm không biến mất, chúng chỉ chuyển từ dạng này sang dạng khác."
+                        </p>
+                    </div>
+                
+                    <div class="mt-8 flex items-start gap-2 opacity-40 hover:opacity-100 transition-opacity">
+                        <i data-lucide="link-2" class="w-3 h-3 text-gray-400 mt-1"></i>
+                        <p class="text-[9px] text-gray-400 font-sans italic leading-tight">
+                            * Nguồn: U.S. Bureau of Labor Statistics, Monthly Labor Review (2025)
+                        </p>
+                    </div>
+                </div>
+                <p>Goldman Sachs ước tính: mỗi khi năng suất tăng 1 điểm phần trăm nhờ công nghệ, tỷ lệ thất nghiệp tăng khoảng 0.3 điểm — nhưng tác động này thường biến mất sau 2 năm khi thị trường điều chỉnh.</p>
+                <div class="mt-8 flex items-start gap-2 opacity-40 hover:opacity-100 transition-opacity">
+                    <i data-lucide="link-2" class="w-3 h-3 text-gray-400 mt-1"></i>
+                    <p class="text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: Goldman Sachs, "How Will AI Affect the Global Workforce?" (tháng 8/2025)
+                    </p>
+                </div>
+
+                <h2>Vậy con số nào đáng tin nhất?</h2>
+                <p>Dựa trên dữ liệu thực tế đến tháng 4/2026, bức tranh hợp lý nhất là:</p>
+                <div class="space-y-4 my-10 scroll-reveal">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        
+                        <div class="glass p-5 rounded-2xl border border-red-500/20 bg-red-500/5 group hover:bg-red-500/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">Nguy cơ thực tế hiện tại</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-red-500 transition-colors">2.5%</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">việc làm Mỹ bị displacement (triển khai AI hiện tại)</p>
+                        </div>
+                
+                        <div class="glass p-5 rounded-2xl border border-orange-500/20 bg-orange-500/5 group hover:bg-orange-500/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">Dài hạn (AI phổ biến)</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-orange-500 transition-colors">6–7%</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">lực lượng lao động Mỹ bị ảnh hưởng trực tiếp</p>
+                        </div>
+                
+                        <div class="glass p-5 rounded-2xl border border-red-600/30 bg-red-600/5 group hover:bg-red-600/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">Việc làm mất 2025</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-red-400 transition-colors">55,000</span>
+                                <i data-lucide="trending-down" class="w-4 h-4 text-red-500 opacity-50"></i>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">lần cắt giảm trực tiếp do AI tại Mỹ (theo Challenger)</p>
+                        </div>
+                
+                        <div class="glass p-5 rounded-2xl border border-orange-600/30 bg-orange-600/5 group hover:bg-orange-600/10 transition-all">
+                            <p class="text-[10px] font-mono text-gray-400 mb-2 uppercase tracking-tight">EY: Hiệu suất & Nhân sự</p>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-3xl font-black text-white group-hover:text-orange-400 transition-colors">17%</span>
+                            </div>
+                            <p class="text-[11px] text-gray-500 mt-2 leading-tight">số tổ chức có lợi nhuận từ AI lại thực hiện cắt người</p>
+                        </div>
+                    </div>
+                
+                    <div class="px-2 opacity-40 hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                            * Nguồn: Goldman Sachs Research; Challenger Gray & Christmas 2025 qua ALMcorp.com; EY December 2025 Research
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-16 mb-10 scroll-reveal">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent to-neon-purple/20"></div>
+                        <h3 class="text-xl font-mono font-bold text-neon-purple tracking-[0.3em] uppercase">Kết luận ngắn gọn</h3>
+                        <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-neon-purple/20"></div>
+                    </div>
+                
+                    <div class="glass p-8 md:p-12 rounded-3xl border border-neon-purple/20 relative overflow-hidden">
+                        <div class="absolute -top-24 -right-24 w-64 h-64 bg-neon-purple/10 rounded-full blur-[100px]"></div>
+                        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-neon-cyan/5 rounded-full blur-[80px]"></div>
+                        
+                        <div class="relative z-10 space-y-8">
+                            <div class="flex gap-6 items-start group">
+                                <div class="mt-1 bg-neon-purple/20 p-2 rounded-lg border border-neon-purple/30 group-hover:bg-neon-purple/40 transition-colors">
+                                    <i data-lucide="zap" class="w-5 h-5 text-neon-purple"></i>
+                                </div>
+                                <div>
+                                    <p class="text-lg md:text-xl text-white leading-relaxed">
+                                        AI đang thay thế <span class="text-neon-purple font-bold">task (nhiệm vụ)</span> nhanh hơn <span class="text-neon-purple font-bold">job (nghề)</span>.
+                                    </p>
+                                </div>
+                            </div>
+                
+                            <div class="flex gap-6 items-start group">
+                                <div class="mt-1 bg-neon-purple/20 p-2 rounded-lg border border-neon-purple/30 group-hover:bg-neon-purple/40 transition-colors">
+                                    <i data-lucide="alert-triangle" class="w-5 h-5 text-neon-purple"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Nguy cơ ngắn hạn không phải làn sóng thất nghiệp — mà là <span class="text-white border-b border-neon-purple/40">thị trường việc làm entry-level thu hẹp</span> và sự phân hóa mạnh giữa người biết dùng AI và người không.
+                                    </p>
+                                </div>
+                            </div>
+                
+                            <div class="flex gap-6 items-start group">
+                                <div class="mt-1 bg-neon-purple/20 p-2 rounded-lg border border-neon-purple/30 group-hover:bg-neon-purple/40 transition-colors">
+                                    <i data-lucide="git-branch" class="w-5 h-5 text-neon-purple"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-300 leading-relaxed">
+                                        Về dài hạn, lịch sử gợi ý rằng việc làm sẽ <span class="italic text-white">chuyển dạng</span> nhiều hơn là biến mất — nhưng quá trình chuyển dạng đó sẽ <span class="text-white font-bold">rất đau</span> với một số nhóm cụ thể.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <footer class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-6">
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-green transition-colors">
+                        <i data-lucide="heart" class="w-5 h-5"></i> <span></span>
+                    </button>
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-cyan transition-colors">
+                        <i data-lucide="message-square" class="w-5 h-5"></i> <span></span>
+                    </button>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-500 text-sm font-mono mr-2 uppercase tracking-tighter">Share:</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </footer>
+        </article>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

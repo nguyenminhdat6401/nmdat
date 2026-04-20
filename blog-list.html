@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nmdat | All Articles</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: { green: '#00ff88', purple: '#b829f7', cyan: '#00d9ff' },
+                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0f; color: #ffffff; }
+        .glass { background: rgba(18, 18, 26, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Copy nguyên xi hiệu ứng card từ index của bạn */
+        .insight-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .insight-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #00ff88 0%, #b829f7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <div class="fixed inset-0 z-0">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(18,18,26,0),#0a0a0f)]"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon-green/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-neon-purple/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                <span class="font-mono text-sm">Quay lại Portfolio</span>
+            </a>
+            <div class="font-mono font-bold text-white">
+                <span class="text-neon-green">&lt;</span>
+                <span class="gradient-text">nmdat</span>
+                <span class="text-neon-purple">/&gt;</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">
+                    Tất cả <span class="gradient-text">Bài viết</span>
+                </h2>
+                <div class="h-1 w-20 bg-gradient-to-r from-neon-green to-neon-purple"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Blog1 -->
+                <a href="blog1.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,255,136,0.2)]">
+                        
+                        <!-- Top gradient -->
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                
+                            <!-- Tag -->
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-neon-green/20 text-neon-green text-xs">
+                                    Kinh tế
+                                </span>
+                            </div>
+                        </div>
+                
+                        <!-- Content -->
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>29/3/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>3 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-neon-green transition-colors">
+                                Kinh tế toàn cầu 2026: Tăng trưởng trong bóng tối của bất ổn
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                Thế giới bước vào 2026 với tâm thế thận trọng: AI bùng nổ là động lực, nhưng chiến tranh Trung Đông, nợ công leo thang...
+                            </p>
+                
+                            <!-- Read more -->
+                            <div class="inline-flex items-center text-neon-green text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog2 -->    
+                <a href="blog2.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(191,123,255,0.2)]">
+                        
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                            
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-neon-purple/20 text-neon-purple text-xs">
+                                    AI
+                                </span>
+                            </div>
+                        </div>
+                
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>7/4/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>4 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-neon-purple transition-colors">
+                                AI sẽ thay thế bao nhiêu việc làm? Các mô hình dự báo nói gì
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                300 triệu việc làm bị xóa sổ hay chỉ 2.5%? Tuỳ bạn hỏi ai — và quan trọng hơn, tuỳ họ đang đo cái gì. Đây là lý do tại sao các con số chênh nhau đến vậy, và con số nào đáng tin hơn.
+                            </p>
+                
+                            <div class="inline-flex items-center text-neon-purple text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog3 -->
+                <a href="blog3.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,255,255,0.15)]">
+                        
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                            
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-neon-cyan/20 text-neon-cyan text-xs">
+                                    Thiên văn học
+                                </span>
+                            </div>
+                        </div>
+                
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>10/4/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>7 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors">
+                                Hệ Mặt Trời: Những sự thật kỳ lạ hơn bạn tưởng
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                8 hành tinh, 1 ngôi sao, hàng trăm mặt trăng, và vô số thứ mà sách giáo khoa không kể. Hãy bay một vòng quanh hệ Mặt Trời — lần này đừng bỏ qua những chi tiết kỳ lạ nhất.
+                            </p>
+                
+                            <div class="inline-flex items-center text-neon-cyan text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                
+                    </article>
+                </a>
+
+                <!-- Blog4 -->    
+                <a href="blog4.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(255,136,0,0.2)]">
+                        
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                            
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-[#ff8800]/20 text-[#ff8800] text-xs font-mono border border-[#ff8800]/20">
+                                    Thiên văn học
+                                </span>
+                            </div>
+                        </div>
+                
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>19/4/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>5 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#ff8800] transition-colors">
+                                Hố đen: Nơi vật lý sụp đổ và thời gian bẻ cong
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                Hố đen không phải "cái lỗ hút mọi thứ" như bạn thường hình dung. Chúng là vết nứt trong cấu trúc không-thời gian — nơi các phương trình vật lý chúng ta biết đều ngừng hoạt động. 
+                            </p>
+                
+                            <div class="inline-flex items-center text-[#ff8800] text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

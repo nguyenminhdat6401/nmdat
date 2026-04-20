@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nmdat | Economy</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: { green: '#00ff88', purple: '#b829f7', cyan: '#00d9ff' },
+                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0f; color: #ffffff; }
+        
+        /* Background Image with Blur */
+        .bg-fixed-img {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000'); /* Bạn có thể thay link ảnh này */
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px) brightness(0.3); /* Làm mờ 8px và giảm độ sáng xuống 30% */
+            transform: scale(1.1); /* Tránh lộ mép trắng khi blur */
+        }
+
+        .glass { 
+            background: rgba(18, 18, 26, 0.7); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+
+        .blog-container {
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00ff88 0%, #00d9ff 50%, #b829f7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .prose p { color: #d1d5db; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .prose h2 { color: #00ff88; font-weight: 700; font-size: 1.875rem; margin-top: 2.5rem; margin-bottom: 1.25rem; font-family: 'JetBrains Mono', monospace; }
+        code { font-family: 'JetBrains Mono', monospace; background: rgba(0, 255, 136, 0.15); padding: 0.2rem 0.4rem; border-radius: 4px; color: #00ff88; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <div class="bg-fixed-img"></div>
+
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-gray-300 hover:text-neon-green transition-colors group">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                <span class="font-mono text-sm">Quay lại Portfolio</span>
+            </a>
+            <div class="font-mono font-bold text-white">
+                <span class="text-neon-green">&lt;</span>
+                <span class="gradient-text">nmdat</span>
+                <span class="text-neon-purple">/&gt;</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-24 px-6">
+        <article class="max-w-4xl mx-auto blog-container rounded-3xl p-8 md:p-12 shadow-2xl">
+            
+            <header class="mb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="px-3 py-1 rounded-full bg-neon-green/10 text-neon-green text-xs font-mono border border-neon-green/20">Kinh tế</span>
+                    <span class="text-gray-500 text-sm font-mono">18.04.2026</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-8 leading-tight">
+                    Kinh tế toàn cầu 2026 <span class="gradient-text">Tăng trưởng</span> trong bóng tối của bất ổn
+                </h1>
+                
+                <div class="flex items-center gap-4 border-y border-white/10 py-6">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-neon-green to-neon-purple p-[2px]">
+                        <div class="w-full h-full rounded-full bg-dark-900 flex items-center justify-center">
+                            <i data-lucide="user" class="w-7 h-7 text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-lg">Nguyễn Minh Đạt</p>
+                        <p class="text-neon-cyan font-mono text-xs uppercase tracking-widest">nmdat</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="prose max-w-none">
+                <p>
+                    Thế giới bước vào 2026 với tâm thế thận trọng: AI bùng nổ là động lực, nhưng chiến tranh Trung Đông, nợ công leo thang và sự phân mảnh thương mại đang kiểm tra sức chịu đựng của nền kinh tế toàn cầu. Việt Nam, bất ngờ thay, nổi lên như một điểm sáng hiếm hoi.
+                </p>
+
+                <div class="glass p-8 rounded-2xl my-10 border-l-4 border-neon-green relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i data-lucide="quote" class="w-12 h-12"></i>
+                    </div>
+                    <p class="italic text-gray-200 text-lg mb-0 relative z-10">
+                        "Biến số lớn nhất: Xung đột Trung Đông. IMF tháng 4/2026 cảnh báo rằng nếu xung đột kéo dài, giá dầu leo thang và eo biển Hormuz bị phong tỏa có thể khiến tăng trưởng toàn cầu giảm đáng kể so với kịch bản cơ sở. Giá xăng tại Mỹ đã tăng lên trung bình $4.11/gallon — mỗi khi giá dầu tăng bền vững $10/thùng, GDP toàn cầu mất khoảng 0.4 điểm phần trăm."
+                    </p>
+                    <p class="text-[10px] italic text-gray-500 mt-4 relative z-10 flex items-center gap-2">
+                        <i data-lucide="link" class="w-3 h-3"></i>
+                        IMF World Economic Outlook tháng 4/2026 · Al Jazeera (14/4/2026)
+                    </p>
+                </div>
+
+                <h2>Bức tranh tổng thể: "Tăng trưởng bền vững nhưng không đồng đều"</h2>
+                <p>
+                    Các tổ chức quốc tế lớn đều đưa ra dự báo tương đối thống nhất: tăng trưởng GDP toàn cầu năm 2026 sẽ dao động quanh mức 2.7–3.1%, thấp hơn mức trung bình trước đại dịch (3.2%). Không sụp đổ, nhưng cũng không thực sự khởi sắc.
+                </p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+                    <div class="glass p-4 rounded-xl border border-white/10 hover:border-neon-green/40 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-2 -top-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i data-lucide="globe" class="w-12 h-12 text-neon-green"></i>
+                        </div>
+                        <p class="text-[10px] font-mono text-gray-400 mb-1 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse"></span>
+                            IMF (04/2026)
+                        </p>
+                        <p class="text-3xl font-extrabold bg-gradient-to-br from-white to-neon-green bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,255,136,0.3)]">
+                            3.1%
+                        </p>
+                        <p class="text-[11px] text-gray-500 mt-2 leading-tight">Tăng trưởng GDP toàn cầu 2026</p>
+                    </div>
+                
+                    <div class="glass p-4 rounded-xl border border-white/10 hover:border-neon-cyan/40 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-2 -top-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i data-lucide="bar-chart-3" class="w-12 h-12 text-neon-cyan"></i>
+                        </div>
+                        <p class="text-[10px] font-mono text-gray-400 mb-1 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-pulse"></span>
+                            OECD (03/2026)
+                        </p>
+                        <p class="text-3xl font-extrabold bg-gradient-to-br from-white to-neon-cyan bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,217,255,0.3)]">
+                            2.9%
+                        </p>
+                        <p class="text-[11px] text-gray-500 mt-2 leading-tight">Dự báo GDP toàn cầu 2026</p>
+                    </div>
+                
+                    <div class="glass p-4 rounded-xl border border-white/10 hover:border-neon-purple/40 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-2 -top-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i data-lucide="trending-up" class="w-12 h-12 text-neon-purple"></i>
+                        </div>
+                        <p class="text-[10px] font-mono text-gray-400 mb-1 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neon-purple animate-pulse"></span>
+                            Goldman Sachs
+                        </p>
+                        <p class="text-3xl font-extrabold bg-gradient-to-br from-white to-neon-purple bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(184,41,247,0.3)]">
+                            2.9%
+                        </p>
+                        <p class="text-[11px] text-gray-500 mt-2 leading-tight">Lạc quan hơn đồng thuận</p>
+                    </div>
+                
+                    <div class="glass p-4 rounded-xl border border-white/10 hover:border-orange-400/40 transition-all group relative overflow-hidden">
+                        <div class="absolute -right-2 -top-2 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i data-lucide="alert-circle" class="w-12 h-12 text-orange-400"></i>
+                        </div>
+                        <p class="text-[10px] font-mono text-gray-400 mb-1 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse"></span>
+                            Lạm phát G20
+                        </p>
+                        <p class="text-3xl font-extrabold bg-gradient-to-br from-white to-orange-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(251,146,60,0.3)]">
+                            4.0%
+                        </p>
+                        <p class="text-[11px] text-gray-500 mt-2 leading-tight">Cao hơn dự kiến do năng lượng</p>
+                    </div>
+                </div>
+                <div class="mt-3 px-1 opacity-40 hover:opacity-80 transition-opacity duration-300 scroll-reveal">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: IMF World Economic Outlook tháng 4/2026; OECD Economic Outlook tháng 3/2026; Goldman Sachs Research
+                    </p>
+                </div>
+
+                <h2>Các nền kinh tế lớn: phân hóa rõ rệt</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-6 scroll-reveal">
+                    <div class="glass p-4 rounded-xl border border-white/5 hover:border-neon-cyan/30 transition-all group">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-mono text-neon-cyan tracking-widest uppercase">Mỹ</span>
+                            <i data-lucide="trending-up" class="w-3 h-3 text-gray-500"></i>
+                        </div>
+                        <p class="text-2xl font-bold text-white group-hover:text-neon-cyan transition-colors">2.1–2.8%</p>
+                        <p class="text-[9px] text-gray-400 mt-1.5 leading-relaxed">PwC & Goldman Sachs ước tính</p>
+                    </div>
+                
+                    <div class="glass p-4 rounded-xl border border-white/5 hover:border-orange-500/30 transition-all group">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-mono text-orange-500 tracking-widest uppercase">Trung Quốc</span>
+                            <i data-lucide="activity" class="w-3 h-3 text-gray-500"></i>
+                        </div>
+                        <p class="text-2xl font-bold text-white group-hover:text-orange-500 transition-colors">4.4–4.8%</p>
+                        <p class="text-[9px] text-gray-400 mt-1.5 leading-relaxed">Xuất khẩu mạnh, tiêu dùng yếu</p>
+                    </div>
+                
+                    <div class="glass p-4 rounded-xl border border-white/5 hover:border-neon-purple/30 transition-all group">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-mono text-neon-purple tracking-widest uppercase">Eurozone</span>
+                            <i data-lucide="pie-chart" class="w-3 h-3 text-gray-500"></i>
+                        </div>
+                        <p class="text-2xl font-bold text-white group-hover:text-neon-purple transition-colors">0.9–1.3%</p>
+                        <p class="text-[9px] text-gray-400 mt-1.5 leading-relaxed">Tăng trưởng thấp, cạnh tranh từ TQ</p>
+                    </div>
+                
+                    <div class="glass p-4 rounded-xl border border-white/5 hover:border-neon-green/30 transition-all group">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-[10px] font-mono text-neon-green tracking-widest uppercase">Ấn Độ</span>
+                            <i data-lucide="zap" class="w-3 h-3 text-gray-500"></i>
+                        </div>
+                        <p class="text-2xl font-bold text-white group-hover:text-neon-green transition-colors">6.6–6.7%</p>
+                        <p class="text-[9px] text-gray-400 mt-1.5 leading-relaxed">Tăng trưởng nhanh nhất G20</p>
+                    </div>
+                </div>
+
+                <div class="mt-3 px-1 opacity-40 hover:opacity-80 transition-opacity duration-300 scroll-reveal">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: IMF WEO tháng 1/2026; Goldman Sachs Research tháng 2/2026; PwC Annual Outlook 2026; World Bank Global Economic Prospects
+                    </p>
+                </div>
+
+                <p>
+                    Câu chuyện thú vị nhất là Trung Quốc. Goldman Sachs dự báo thặng dư tài khoản vãng lai của Trung Quốc sẽ tiến đến gần 1% GDP toàn cầu trong 3–5 năm tới — mức lớn nhất trong lịch sử. Điều này gây áp lực nặng nề lên các nền kinh tế cạnh tranh trực tiếp như Đức và Eurozone, đồng thời buộc dòng hàng xuất khẩu Trung Quốc phải tìm thị trường mới với giá giảm trung bình 8%.
+                </p>
+
+                <h2>Chủ đề thống trị: Trí tuệ nhân tạo và tái định hình chuỗi cung ứng</h2>
+
+                <p>
+                    Nếu phải chọn một từ khóa cho kinh tế 2026, đó là AI. Nhưng không phải theo nghĩa hype — mà theo nghĩa vốn đầu tư thực sự.
+                </p>
+                
+                <div class="glass p-8 rounded-2xl my-10 border-l-4 border-neon-green relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <i data-lucide="quote" class="w-12 h-12"></i>
+                    </div>
+                    <p class="italic text-gray-200 text-lg mb-0 relative z-10">
+                        Dữ liệu đáng chú ý: Đầu tư AI toàn cầu (capex) ước đạt 571 tỷ USD vào 2026. Trong năm 2025, đầu tư AI đóng góp hơn một nửa tăng trưởng thương mại toàn cầu — bao gồm chip bán dẫn, trung tâm dữ liệu và thiết bị hạ tầng. Riêng tại Mỹ, lĩnh vực thông tin-truyền thông (bao gồm AI) đóng góp +1.1 điểm phần trăm vào tăng trưởng GDP 2025.
+                    </p>
+                    <p class="text-[10px] italic text-gray-500 mt-4 relative z-10 flex items-center gap-2">
+                        <i data-lucide="link" class="w-3 h-3"></i>
+                        Allianz Economic Outlook 2026–27; WTO Global Trade Outlook; Global Trade Magazine, tháng 3/2026
+                    </p>    
+                </div>
+                <p>
+                Song song với đó, chuỗi cung ứng toàn cầu đang được vẽ lại theo đường địa chính trị. Thương mại Mỹ–Trung giảm khoảng 30% do thuế quan; Mỹ bù đắp 2/3 bằng nhập khẩu từ nơi khác, còn ASEAN — bao gồm Việt Nam — trở thành người thụ hưởng lớn từ sự dịch chuyển này.
+                </p>
+
+                <div class="mt-3 px-1 opacity-40 hover:opacity-80 transition-opacity duration-300 scroll-reveal">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: McKinsey Global Institute, "Geopolitics and the Geometry of Global Trade 2026 Update" (tháng 3/2026)
+                    </p>
+                </div>
+
+                <h2>Việt Nam: điểm sáng của Đông Nam Á</h2>
+                <div class="mt-12 mb-6 scroll-reveal">
+                    <div class="mb-6 border-l-4 border-neon-green pl-4">
+                        <h4 class="text-neon-green font-mono text-xs uppercase tracking-[0.2em] mb-1">Spotlight 2026</h4>
+                        <h3 class="text-xl md:text-2xl font-bold text-white">
+                            Việt Nam: Nổi bật nhất khu vực <span class="text-neon-green">Đông Á – Thái Bình Dương</span>
+                        </h3>
+                        <p class="text-gray-400 text-xs md:text-sm mt-2 max-w-3xl leading-relaxed">
+                            Sau khi tăng trưởng <span class="text-white font-bold">8.02% năm 2025</span> — mức cao nhất trong gần 3 thập kỷ — Việt Nam bước vào 2026 với mục tiêu tham vọng: <span class="text-white italic">tăng trưởng trên 10%</span>. Các tổ chức quốc tế thận trọng hơn nhưng đều lạc quan.
+                        </p>
+                    </div>
+                
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="glass p-4 rounded-xl border border-neon-green/10 bg-neon-green/5 hover:bg-neon-green/10 transition-all group">
+                            <p class="text-[9px] font-mono text-gray-400 mb-1">World Bank (1/2026)</p>
+                            <div class="flex items-end gap-1">
+                                <p class="text-3xl font-extrabold text-white group-hover:text-neon-green transition-colors">6.3%</p>
+                                <i data-lucide="trending-up" class="w-4 h-4 text-neon-green mb-1.5 opacity-50"></i>
+                            </div>
+                            <p class="text-[9px] text-gray-500 mt-2">Cao nhất Đông Á–TBD</p>
+                        </div>
+                
+                        <div class="glass p-4 rounded-xl border border-neon-green/10 bg-neon-green/5 hover:bg-neon-green/10 transition-all group">
+                            <p class="text-[9px] font-mono text-gray-400 mb-1">HSBC (1/2026)</p>
+                            <div class="flex items-end gap-1">
+                                <p class="text-3xl font-extrabold text-white group-hover:text-neon-green transition-colors">6.7%</p>
+                                <i data-lucide="cpu" class="w-4 h-4 text-neon-green mb-1.5 opacity-50"></i>
+                            </div>
+                            <p class="text-[9px] text-gray-500 mt-2 font-sans">Nhờ xuất khẩu điện tử, AI</p>
+                        </div>
+                
+                        <div class="glass p-4 rounded-xl border border-neon-green/10 bg-neon-green/5 hover:bg-neon-green/10 transition-all group">
+                            <p class="text-[9px] font-mono text-gray-400 mb-1">AMRO (4/2026)</p>
+                            <div class="flex items-end gap-1">
+                                <p class="text-3xl font-extrabold text-white group-hover:text-neon-green transition-colors">7.4%</p>
+                                <i data-lucide="bar-chart" class="w-4 h-4 text-neon-green mb-1.5 opacity-50"></i>
+                            </div>
+                            <p class="text-[9px] text-gray-500 mt-2">Dự báo mới nhất</p>
+                        </div>
+                
+                        <div class="glass p-4 rounded-xl border border-neon-green/20 bg-neon-green/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.1)] transition-all group border-dashed">
+                            <p class="text-[9px] font-mono text-neon-green mb-1">Techcombank CIBG</p>
+                            <div class="flex items-end gap-1">
+                                <p class="text-3xl font-extrabold text-neon-green transition-colors">7.8%</p>
+                                <i data-lucide="zap" class="w-4 h-4 text-neon-green mb-1.5 animate-pulse"></i>
+                            </div>
+                            <p class="text-[9px] text-neon-green/80 mt-2 font-bold uppercase tracking-tighter">Kịch bản cơ sở</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 px-1 opacity-40 hover:opacity-80 transition-opacity duration-300 scroll-reveal">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: World Bank Global Economic Prospects 1/2026; theinvestor.vn; AMRO AREO 2026 (4/2026); Techcombank Monthly Report 11/2025.
+                    </p>
+                </div>
+                <p>
+                    Động lực chính là điện tử và bán dẫn — Việt Nam hưởng lợi từ cuộc đua chip Mỹ–Trung, khi nhu cầu chip phục vụ AI bùng nổ. FDI giải ngân năm 2025 ước đạt 27–38 tỷ USD, mức kỷ lục. Chính phủ cũng phê duyệt kế hoạch đầu tư công 2026 đạt 1.1 nghìn tỷ đồng, tăng 30% so với kế hoạch 2025.
+                </p>
+                <div class="mt-3 px-1 opacity-40 hover:opacity-80 transition-opacity duration-300 scroll-reveal">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: vietnamplus.vn; Techcombank CIBG Research.
+                    </p>
+                </div>
+
+                <div class="mt-16 mb-12 scroll-reveal">
+                    <div class="mb-10 flex items-center gap-4">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                            5 Xu hướng <span class="gradient-text">Định hình Kinh tế</span>
+                        </h3>
+                        <div class="h-[1px] flex-grow bg-gradient-to-r from-white/20 to-transparent"></div>
+                    </div>
+                
+                    <div class="space-y-4">
+                        <div class="glass p-6 rounded-2xl border border-white/5 hover:border-neon-cyan/30 transition-all group relative overflow-hidden">
+                            <div class="flex flex-col md:flex-row gap-6 items-start relative z-10">
+                                <span class="text-5xl font-black text-neon-cyan/20 group-hover:text-neon-cyan/40 transition-colors font-mono italic">01</span>
+                                <div class="flex-grow">
+                                    <h4 class="text-lg font-bold text-neon-cyan mb-2 flex items-center gap-2">
+                                        <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+                                        AI thay đổi cấu trúc lao động
+                                    </h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Goldman Sachs ghi nhận tăng trưởng việc làm tại các nền kinh tế phát triển đã giảm xuống dưới mức 2019. Tác động của AI hiện mới tập trung ở ngành công nghệ, nhưng có khả năng lan rộng hơn trong <span class="text-white">2–3 năm tới</span> khi năng suất bắt đầu tăng rõ rệt.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="glass p-6 rounded-2xl border border-white/5 hover:border-neon-purple/30 transition-all group relative overflow-hidden">
+                            <div class="flex flex-col md:flex-row gap-6 items-start relative z-10">
+                                <span class="text-5xl font-black text-neon-purple/20 group-hover:text-neon-purple/40 transition-colors font-mono italic">02</span>
+                                <div class="flex-grow">
+                                    <h4 class="text-lg font-bold text-neon-purple mb-2 flex items-center gap-2">
+                                        <i data-lucide="globe-2" class="w-5 h-5"></i>
+                                        Địa chính trị định hình thương mại
+                                    </h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Hàng hóa đi theo "phe" thay vì theo lợi thế so sánh thuần túy. Các doanh nghiệp cần chiến lược <span class="text-white">"China+1"</span> hoặc <span class="text-white">"Friend-shoring"</span> để giảm thiểu rủi ro đứt gãy chuỗi cung ứng toàn cầu.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="glass p-6 rounded-2xl border border-white/5 hover:border-neon-green/30 transition-all group relative overflow-hidden">
+                            <div class="flex flex-col md:flex-row gap-6 items-start relative z-10">
+                                <span class="text-5xl font-black text-neon-green/20 group-hover:text-neon-green/40 transition-colors font-mono italic">03</span>
+                                <div class="flex-grow">
+                                    <h4 class="text-lg font-bold text-neon-green mb-2 flex items-center gap-2">
+                                        <i data-lucide="factory" class="w-5 h-5"></i>
+                                        ASEAN trỗi dậy như hub sản xuất mới
+                                    </h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Từ 2017–2025, tổng thương mại của ASEAN tăng <span class="text-white">~68%</span> — cao nhất thế giới. Xu hướng dịch chuyển dòng vốn FDI vào khu vực này vẫn đang tiếp tục tăng tốc mạnh mẽ.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="glass p-6 rounded-2xl border border-white/5 hover:border-red-500/30 transition-all group relative overflow-hidden">
+                            <div class="flex flex-col md:flex-row gap-6 items-start relative z-10">
+                                <span class="text-5xl font-black text-red-500/20 group-hover:text-red-500/40 transition-colors font-mono italic">04</span>
+                                <div class="flex-grow">
+                                    <h4 class="text-lg font-bold text-red-400 mb-2 flex items-center gap-2">
+                                        <i data-lucide="bomb" class="w-5 h-5"></i>
+                                        Nợ công là quả bom hẹn giờ
+                                    </h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Mỹ, Anh, Pháp đều có tỷ lệ nợ/GDP <span class="text-white">trên 100%</span>. Không gian tài khóa thu hẹp đồng nghĩa với ít đệm chính sách hơn khi có khủng hoảng bất ngờ xảy ra trong tương lai.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="glass p-6 rounded-2xl border border-white/5 hover:border-orange-400/30 transition-all group relative overflow-hidden">
+                            <div class="flex flex-col md:flex-row gap-6 items-start relative z-10">
+                                <span class="text-5xl font-black text-orange-400/20 group-hover:text-orange-400/40 transition-colors font-mono italic">05</span>
+                                <div class="flex-grow">
+                                    <h4 class="text-lg font-bold text-orange-400 mb-2 flex items-center gap-2">
+                                        <i data-lucide="leaf" class="w-5 h-5"></i>
+                                        Chuyển dịch năng lượng không thể đảo ngược
+                                    </h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Việc giảm phụ thuộc vào nhiên liệu hóa thạch nhập khẩu đang trở thành vấn đề <span class="text-white font-bold">an ninh kinh tế</span> cốt lõi, vượt ra ngoài khuôn khổ bảo vệ môi trường đơn thuần.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 px-1 opacity-40 hover:opacity-80 transition-opacity duration-300 scroll-reveal">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: vietnamplus.vn; Techcombank CIBG Research.
+                    </p>
+                </div>
+
+            </div>
+
+            
+
+            <footer class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-6">
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-green transition-colors">
+                        <i data-lucide="heart" class="w-5 h-5"></i> <span></span>
+                    </button>
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-cyan transition-colors">
+                        <i data-lucide="message-square" class="w-5 h-5"></i> <span></span>
+                    </button>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-500 text-sm font-mono mr-2 uppercase tracking-tighter">Share:</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

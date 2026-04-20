@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nmdat | Astronomy</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: { green: '#00ff88', purple: '#b829f7', cyan: '#00d9ff' },
+                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0f; color: #ffffff; }
+        .bg-fixed-img {
+            position: fixed; inset: 0; z-index: -1;
+            background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            filter: blur(12px) brightness(0.2); transform: scale(1.1);
+        }
+        .glass { background: rgba(18, 18, 26, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .blog-container { background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(0, 217, 255, 0.2); }
+        .gradient-text { background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .prose p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .prose h2 { color: #00d9ff; font-weight: 700; font-size: 1.875rem; margin-top: 2.5rem; margin-bottom: 1.25rem; font-family: 'JetBrains Mono', monospace; }
+        code { font-family: 'JetBrains Mono', monospace; background: rgba(0, 217, 255, 0.1); padding: 0.2rem 0.4rem; border-radius: 4px; color: #00d9ff; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <div class="bg-fixed-img"></div>
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm font-mono">
+            <a href="index.html" class="text-gray-400 hover:text-neon-cyan transition-colors flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                <span class="font-mono text-sm">Quay lại Portfolio</span>
+            </a>
+            <div class="font-mono font-bold text-white">
+                <span class="text-neon-green">&lt;</span>
+                <span class="gradient-text">nmdat</span>
+                <span class="text-neon-purple">/&gt;</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-24 px-6">
+        <article class="max-w-4xl mx-auto blog-container rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,217,255,0.1)]">
+            <header class="mb-12">
+                <span class="px-3 py-1 rounded-full bg-neon-cyan/10 text-neon-cyan text-xs font-mono border border-neon-cyan/20">Thiên văn học</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-6 mb-8 leading-tight">
+                    Hệ Mặt Trời: <span class="gradient-text">Những sự thật kỳ lạ hơn bạn tưởng</span>
+                </h1>
+                <div class="flex items-center gap-6 border-b border-white/5 pb-8 text-gray-400 font-mono text-sm">
+                    <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> 10.4.2026</span>
+                    <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> 7 phút đọc</span>
+                </div>
+
+                <div class="flex items-center gap-4 border-y border-white/10 py-6">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-neon-green to-neon-purple p-[2px]">
+                        <div class="w-full h-full rounded-full bg-dark-900 flex items-center justify-center">
+                            <i data-lucide="user" class="w-7 h-7 text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-lg">Nguyễn Minh Đạt</p>
+                        <p class="text-neon-cyan font-mono text-xs uppercase tracking-widest">nmdat</p>
+                    </div>
+                </div>
+
+            </header>
+            
+
+            <div class="prose max-w-none text-gray-300">
+                <p>8 hành tinh, 1 ngôi sao, hàng trăm mặt trăng, và vô số thứ mà sách giáo khoa không kể. Hãy bay một vòng quanh hệ Mặt Trời — lần này đừng bỏ qua những chi tiết kỳ lạ nhất.</p>
+                
+                <h2>Mặt Trời — ông chủ thực sự</h2>
+                <p>Trước khi nói đến hành tinh nào, hãy nhìn vào con số này: Mặt Trời chiếm 99.86% tổng khối lượng của toàn bộ hệ Mặt Trời. Tất cả 8 hành tinh, tất cả tiểu hành tinh, sao chổi, và mọi thứ còn lại — cộng lại chỉ bằng 0.14%.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto my-8">
+    
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-colors group">
+                        <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mb-2">Đường kính</p>
+                        <div class="flex items-baseline gap-2">
+                            <h3 class="text-3xl font-black text-white">1.39</h3>
+                            <span class="text-gray-400 text-lg">triệu km</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mt-1">= 109 lần Trái Đất</p>
+                    </div>
+                
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-colors group">
+                        <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mb-2">Nhiệt độ</p>
+                        <h3 class="text-3xl font-black text-white">5,500°C <span class="text-sm font-normal text-gray-400">bề mặt</span></h3>
+                        <p class="text-gray-500 text-sm mt-1">Lõi: <span class="text-orange-200/80">15 triệu °C</span></p>
+                    </div>
+                
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-colors md:col-span-2">
+                        <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mb-3">Ánh sáng tới</p>
+                        <div class="flex flex-col sm:flex-row gap-6 sm:gap-12">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-orange-500/10 flex items-center justify-center">
+                                    <i data-lucide="globe" class="w-5 h-5 text-orange-500"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-white leading-none">8 phút 20 giây</p>
+                                    <p class="text-gray-500 text-xs mt-1">Trái Đất</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-gray-400"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xl font-bold text-white leading-none">5.5 giờ</p>
+                                    <p class="text-gray-500 text-xs mt-1">Sao Diêm Vương</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-6 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-colors md:col-span-2">
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <p class="text-orange-500 text-xs font-bold uppercase tracking-widest mb-1">Tuổi đời</p>
+                                <h3 class="text-3xl font-black text-white">4.6 tỷ năm</h3>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-gray-500 text-xs">Còn sống thêm</p>
+                                <p class="text-white font-bold">~5 tỷ năm</p>
+                            </div>
+                        </div>
+                        <div class="relative h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-600 to-yellow-400 w-1/2 rounded-full shadow-[0_0_15px_rgba(234,88,12,0.5)]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto my-10 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-orange-600 to-yellow-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    
+                    <div class="relative glass-card p-8 rounded-3xl border border-white/10 overflow-hidden">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            
+                            <div class="flex-shrink-0 relative">
+                                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-yellow-300 animate-pulse shadow-[0_0_30px_rgba(255,165,0,0.4)]"></div>
+                                <i data-lucide="sparkles" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white w-8 h-8"></i>
+                            </div>
+                
+                            <div class="space-y-4">
+                                <h4 class="text-orange-500 font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+                                    <span class="w-8 h-px bg-orange-500"></span>
+                                    Điều ít biết
+                                </h4>
+                                
+                                <p class="text-white text-lg leading-relaxed font-medium">
+                                    Ánh sáng mặt trời bạn đang thấy hôm nay thực ra được tạo ra từ <span class="text-orange-400 underline underline-offset-4 decoration-orange-500/50">hàng chục nghìn năm trước</span> ở lõi Mặt Trời.
+                                </p>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                                    <div class="bg-white/5 p-4 rounded-xl border border-white/5 transition hover:bg-white/10">
+                                        <p class="text-gray-400 text-xs mb-1">Từ Lõi ra Bề mặt</p>
+                                        <p class="text-white font-bold">~100,000 năm</p>
+                                        <p class="text-[10px] text-gray-500 mt-1 italic">Do va chạm liên tục với các lớp plasma</p>
+                                    </div>
+                                    
+                                    <div class="bg-white/5 p-4 rounded-xl border border-white/5 transition hover:bg-white/10">
+                                        <p class="text-gray-400 text-xs mb-1">Từ Bề mặt tới Mắt bạn</p>
+                                        <p class="text-white font-bold">Chỉ 8 phút</p>
+                                        <p class="text-[10px] text-gray-500 mt-1 italic">Tốc độ ánh sáng trong chân không</p>
+                                    </div>
+                                </div>
+                                
+                                <p class="text-gray-400 text-sm italic">
+                                    — Photon mất rất lâu để thoát ra qua các lớp plasma dày đặc trước khi bắt đầu hành trình xuyên không gian.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Sao Thủy — hành tinh của những kỷ lục cực đoan</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+    
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 blur-3xl group-hover:bg-orange-500/20 transition-all"></div>
+                        <div class="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/10 blur-3xl group-hover:bg-cyan-500/20 transition-all"></div>
+                
+                        <div class="relative z-10">
+                            <h4 class="text-cyan-400 font-bold uppercase tracking-widest text-xs mb-4 flex items-center gap-2">
+                                <span class="w-8 h-px bg-cyan-400"></span>
+                                Sự thật gây nhầm lẫn
+                            </h4>
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6">
+                                Gần Mặt Trời nhất nhưng <span class="text-orange-500 underline decoration-2 underline-offset-8">không phải</span> hành tinh nóng nhất.
+                            </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="bg-orange-500/5 p-4 rounded-2xl border border-orange-500/10">
+                                    <p class="text-gray-500 text-[10px] uppercase font-bold tracking-tighter mb-1">Ban ngày</p>
+                                    <p class="text-2xl font-black text-orange-500">430°C</p>
+                                </div>
+                                <div class="bg-cyan-500/5 p-4 rounded-2xl border border-cyan-500/10">
+                                    <p class="text-gray-500 text-[10px] uppercase font-bold tracking-tighter mb-1">Ban đêm</p>
+                                    <p class="text-2xl font-black text-cyan-400">-180°C</p>
+                                </div>
+                                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex flex-col justify-center">
+                                    <p class="text-gray-400 text-[10px] uppercase font-bold tracking-tighter">Chênh lệch lớn nhất</p>
+                                    <p class="text-xl font-bold text-white">> 600°C</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-500 text-sm mt-6 italic italic">Do không có khí quyển để giữ nhiệt, Sao Thủy vừa là lò nướng vừa là tủ cấp đông.</p>
+                        </div>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 hover:border-cyan-500/30 transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-cyan-400 text-[10px] font-black uppercase tracking-widest">Một năm</p>
+                                    <h3 class="text-4xl font-black text-white">88 <span class="text-lg font-normal text-gray-500">ngày</span></h3>
+                                </div>
+                                <i data-lucide="timer" class="text-gray-600 group-hover:text-cyan-400 transition-colors"></i>
+                            </div>
+                            <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-cyan-500 w-1/4 animate-pulse"></div>
+                            </div>
+                            <p class="text-gray-500 text-xs mt-3">Tốc độ quay quanh Mặt Trời cực nhanh.</p>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 hover:border-orange-500/30 transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-orange-500 text-[10px] font-black uppercase tracking-widest">Một ngày</p>
+                                    <h3 class="text-4xl font-black text-white">176 <span class="text-lg font-normal text-gray-500">ngày</span></h3>
+                                </div>
+                                <i data-lucide="refresh-cw" class="text-gray-600 group-hover:text-orange-500 transition-colors"></i>
+                            </div>
+                            <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                <div class="h-full bg-orange-500 w-3/4"></div>
+                            </div>
+                            <p class="text-gray-500 text-xs mt-3">Quay quanh trục vô cùng chậm chạp.</p>
+                        </div>
+                
+                        <div class="md:col-span-2 glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent">
+                            <div class="flex gap-4 items-center">
+                                <div class="bg-yellow-500/20 p-3 rounded-full shrink-0">
+                                    <i data-lucide="zap" class="text-yellow-500 w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-bold mb-1">Kỳ lạ nhất: <span class="text-yellow-500">Ngày dài hơn Năm</span></h5>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Hành tinh này bay quanh Mặt Trời rất nhanh nhưng tự quay quanh mình rất chậm, khiến một chu kỳ mặt trời (một ngày) thực tế kéo dài gấp đôi thời gian nó hoàn thành một quỹ đạo (một năm).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+
+                <h2>Sao Kim — địa ngục được bao phủ bởi mây đẹp</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group shadow-[0_0_50px_rgba(251,146,60,0.1)]">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-600/5 to-red-600/5 opacity-50"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-orange-500/20 text-orange-400 text-[10px] font-bold uppercase tracking-widest border border-orange-500/30">
+                                    Hành tinh nóng nhất
+                                </span>
+                            </div>
+                            
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-6">
+                                Khí quyển dày đặc CO₂ tạo nên một <span class="text-orange-500 font-bold">"lò áp suất"</span> khổng lồ, giữ nhiệt độ ổn định quanh 465°C — đủ để làm chì tan chảy.
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="glass-card bg-white/5 p-6 rounded-2xl border border-white/5">
+                                    <p class="text-orange-400 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+                                        <i data-lucide="thermometer-sun" class="w-4 h-4"></i> Nhiệt độ bề mặt
+                                    </p>
+                                    <p class="text-4xl font-black text-white">465°C</p>
+                                    <p class="text-gray-500 text-xs mt-2 italic">Không đổi cả ngày lẫn đêm</p>
+                                </div>
+                
+                                <div class="glass-card bg-white/5 p-6 rounded-2xl border border-white/5">
+                                    <p class="text-red-400 text-xs font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
+                                        <i data-lucide="waves" class="w-4 h-4"></i> Áp suất khí quyển
+                                    </p>
+                                    <p class="text-4xl font-black text-white">92 <span class="text-lg font-normal opacity-50 text-gray-400">atm</span></p>
+                                    <p class="text-gray-500 text-xs mt-2 italic">= Áp lực ở đáy biển sâu 900m</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 flex flex-col justify-between group hover:border-orange-500/30 transition-all">
+                            <div>
+                                <p class="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-4">Chu kỳ tự quay</p>
+                                <h3 class="text-4xl font-black text-white mb-2">243 <span class="text-lg font-normal text-gray-500">ngày</span></h3>
+                                <p class="text-gray-400 text-sm italic">Dài hơn cả một năm của nó (225 ngày).</p>
+                            </div>
+                            <div class="mt-6 flex gap-1">
+                                <div class="h-1 flex-1 bg-orange-500/50 rounded-full"></div>
+                                <div class="h-1 flex-1 bg-orange-500/30 rounded-full"></div>
+                                <div class="h-1 flex-1 bg-orange-500/10 rounded-full"></div>
+                            </div>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-tr from-orange-500/[0.03] to-transparent group">
+                            <div class="flex items-start gap-4">
+                                <div class="p-3 rounded-2xl bg-orange-500/10 group-hover:rotate-180 transition-transform duration-1000">
+                                    <i data-lucide="rotate-ccw" class="text-orange-500 w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-bold mb-2">Quay ngược chiều</h5>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        Sao Kim quay ngược so với hầu hết các hành tinh. Nếu đứng ở đây, bạn sẽ thấy <span class="text-white font-medium">Mặt Trời mọc ở phía Tây</span> và lặn ở phía Đông.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+
+                <h2>Trái Đất — không đặc biệt, nhưng hoàn hảo đến kỳ lạ</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(16,185,129,0.1)_0%,_transparent_50%)]"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest border border-emerald-500/30">
+                                    Vùng Goldilocks
+                                </span>
+                            </div>
+                            
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">
+                                Không phải to nhất hay rực rỡ nhất, nhưng đây là nơi duy nhất có <span class="text-emerald-400 underline decoration-2 underline-offset-8">sự cân bằng hoàn hảo</span> để nước tồn tại ở dạng lỏng.
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="glass-card bg-white/5 p-5 rounded-2xl border border-white/5 flex items-center gap-4 transition hover:bg-white/10">
+                                    <div class="w-12 h-12 rounded-full bg-orange-500/20 flex items-center justify-center shrink-0">
+                                        <i data-lucide="thermometer-sun" class="text-orange-500"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-bold">Gần hơn 5%</p>
+                                        <p class="text-gray-500 text-xs">Mọi đại dương bốc hơi hoàn toàn</p>
+                                    </div>
+                                </div>
+                
+                                <div class="glass-card bg-white/5 p-5 rounded-2xl border border-white/5 flex items-center gap-4 transition hover:bg-white/10">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0">
+                                        <i data-lucide="snowflake" class="text-blue-500"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-bold">Xa hơn 1%</p>
+                                        <p class="text-gray-500 text-xs">Mọi thứ đóng băng vĩnh cửu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-blue-500/[0.03] to-transparent">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            
+                            <div class="relative shrink-0">
+                                <div class="w-24 h-24 rounded-full border-4 border-white/5 flex items-center justify-center">
+                                    <i data-lucide="clock" class="w-10 h-10 text-emerald-500 animate-[spin_10s_linear_infinite]"></i>
+                                </div>
+                                <div class="absolute inset-0 border-r-4 border-emerald-500 rounded-full rotate-[15deg]"></div>
+                            </div>
+                
+                            <div class="space-y-4">
+                                <h5 class="text-white font-bold text-lg flex items-center gap-2">
+                                    Con số đáng suy nghĩ
+                                </h5>
+                                <p class="text-gray-400 leading-relaxed italic text-sm">
+                                    Nếu coi lịch sử 4.5 tỷ năm của Trái Đất là một năm dương lịch, thì Homo sapiens chỉ xuất hiện vào lúc:
+                                </p>
+                                
+                                <div class="inline-block px-6 py-3 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+                                    <span class="text-2xl font-black text-emerald-400 tracking-tighter">11:36 PM, Ngày 31 Tháng 12</span>
+                                </div>
+                                
+                                <p class="text-gray-500 text-xs">
+                                    Chúng ta chỉ vừa mới xuất hiện trong vài phút cuối cùng của "năm" vĩ đại này.
+                                </p>
+                            </div>
+                        </div>
+                
+                        <div class="mt-8 pt-8 border-t border-white/5">
+                            <div class="flex justify-between text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-2">
+                                <span>01 Tháng 01 (Sơ khai)</span>
+                                <span>31 Tháng 12 (Hiện tại)</span>
+                            </div>
+                            <div class="h-2 w-full bg-white/5 rounded-full relative overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 bg-emerald-500 w-[99.9%] rounded-l-full"></div>
+                                <div class="absolute inset-y-0 right-0 bg-white w-[0.1%] animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <h2>Sao Hỏa — người hàng xóm đáng thương</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group shadow-[0_0_50px_rgba(234,88,12,0.1)]">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-red-600/5 blur-[100px]"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-[10px] font-bold uppercase tracking-widest border border-red-500/30">
+                                    Sa mạc đỏ
+                                </span>
+                            </div>
+                            
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">
+                                3 tỷ năm trước, đây từng là một thế giới xanh với đại dương. Nhưng khi <span class="text-red-500 font-bold">từ trường biến mất</span>, gió Mặt Trời đã thổi bay tất cả, để lại một sa mạc lạnh giá.
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+                                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <p class="text-[10px] text-gray-500 uppercase font-bold mb-1 tracking-tighter">Olympus Mons</p>
+                                    <p class="text-2xl font-black text-white">21.9 km</p>
+                                    <p class="text-[10px] text-red-400 mt-1">Cao gấp 2.5x Everest</p>
+                                </div>
+                                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <p class="text-[10px] text-gray-500 uppercase font-bold mb-1 tracking-tighter">Valles Marineris</p>
+                                    <p class="text-2xl font-black text-white">4,000 km</p>
+                                    <p class="text-[10px] text-red-400 mt-1">Dài bằng nước Mỹ</p>
+                                </div>
+                                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <p class="text-[10px] text-gray-500 uppercase font-bold mb-1 tracking-tighter">Nhiệt độ TB</p>
+                                    <p class="text-2xl font-black text-white">-60°C</p>
+                                    <p class="text-[10px] text-red-400 mt-1">Min: -125°C | Max: 20°C</p>
+                                </div>
+                                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
+                                    <p class="text-[10px] text-gray-500 uppercase font-bold mb-1 tracking-tighter">Mặt trăng</p>
+                                    <p class="text-2xl font-black text-white">2</p>
+                                    <p class="text-[10px] text-red-400 mt-1">Phobos & Deimos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-tr from-red-900/10 to-transparent group">
+                        <div class="flex flex-col md:flex-row gap-6 items-center">
+                            <div class="relative shrink-0">
+                                <div class="w-20 h-20 rounded-xl bg-stone-700/50 rotate-12 border border-white/10 flex items-center justify-center overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                                    <i data-lucide="orbit" class="w-8 h-8 text-red-500"></i>
+                                </div>
+                                <div class="absolute -bottom-2 -right-2 bg-red-600 w-6 h-6 rounded-full flex items-center justify-center animate-bounce">
+                                    <i data-lucide="arrow-down" class="w-3 h-3 text-white"></i>
+                                </div>
+                            </div>
+                
+                            <div class="space-y-2">
+                                <h5 class="text-white font-bold flex items-center gap-2">
+                                    Điều ít ai biết: <span class="text-red-500">Số phận của Phobos</span>
+                                </h5>
+                                <p class="text-gray-400 text-sm leading-relaxed italic">
+                                    Phobos đang tiến gần Sao Hỏa <span class="text-white font-medium">1.8 cm mỗi năm</span>. Trong 50 triệu năm tới, nó sẽ bị lực triều cường xé nát, tạo thành một <span class="text-red-400">vành đai rực rỡ</span> bao quanh hành tinh Đỏ.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Sao Mộc — người khổng lồ bảo vệ Trái Đất</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group shadow-[0_0_50px_rgba(245,158,11,0.1)]">
+                        <div class="absolute inset-0 opacity-5 pointer-events-none">
+                            <div class="absolute top-1/4 w-full h-8 bg-amber-500 blur-xl"></div>
+                            <div class="absolute top-1/2 w-full h-12 bg-orange-500 blur-2xl"></div>
+                            <div class="absolute bottom-1/4 w-full h-6 bg-yellow-500 blur-lg"></div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-bold uppercase tracking-widest border border-amber-500/30">
+                                    The Great Protector
+                                </span>
+                            </div>
+                            
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">
+                                Lực hấp dẫn khổng lồ của Sao Mộc đóng vai trò như một <span class="text-amber-500 font-bold">"máy hút bụi vũ trụ"</span>, bẫy các thiên thạch nguy hiểm trước khi chúng kịp tiếp cận Trái Đất.
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-amber-500/5 transition-colors">
+                                    <p class="text-amber-500 text-[10px] font-black uppercase tracking-widest mb-2">Khối lượng</p>
+                                    <p class="text-3xl font-black text-white italic">318<span class="text-lg font-normal opacity-40">×</span></p>
+                                    <p class="text-gray-500 text-xs mt-1">Lần Trái Đất</p>
+                                </div>
+                
+                                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-amber-500/5 transition-colors">
+                                    <p class="text-amber-500 text-[10px] font-black uppercase tracking-widest mb-2">Mặt trăng</p>
+                                    <p class="text-3xl font-black text-white italic">95</p>
+                                    <p class="text-gray-500 text-xs mt-1">Nhiều nhất hệ</p>
+                                </div>
+                
+                                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-amber-500/5 transition-colors">
+                                    <p class="text-amber-500 text-[10px] font-black uppercase tracking-widest mb-2">Tốc độ quay</p>
+                                    <p class="text-3xl font-black text-white italic">10h</p>
+                                    <p class="text-gray-500 text-xs mt-1">Một ngày siêu ngắn</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 flex gap-5 items-start bg-gradient-to-br from-red-600/[0.05] to-transparent">
+                            <div class="w-14 h-14 shrink-0 rounded-full bg-gradient-to-br from-red-700 to-orange-500 border-2 border-white/10 shadow-[0_0_20px_rgba(185,28,28,0.4)] flex items-center justify-center">
+                                <i data-lucide="wind" class="text-white w-6 h-6 animate-pulse"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold mb-1 italic">Vết Đỏ Lớn</h5>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    Cơn bão tồn tại hơn 350 năm. Hiện tại vẫn đủ lớn để chứa trọn <span class="text-white">1.3 Trái Đất</span> bên trong lõi bão.
+                                </p>
+                            </div>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 flex gap-5 items-start bg-gradient-to-br from-amber-500/[0.05] to-transparent group">
+                            <div class="p-4 rounded-2xl bg-amber-500/10 text-amber-500 group-hover:scale-110 transition-transform">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold mb-1">Người gác cổng</h5>
+                                <p class="text-gray-400 text-sm leading-relaxed italic">
+                                    Không có Sao Mộc, Trái Đất có thể bị thiên thạch bắn phá nhiều hơn <span class="text-amber-400 font-bold">1,000 lần</span>.
+                                </p>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
+
+                <h2>Sao Thổ — đẹp nhất, nhẹ nhất</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group shadow-[0_0_50px_rgba(245,230,150,0.1)]">
+                        <div class="absolute inset-0 opacity-10 pointer-events-none">
+                            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-white rotate-[-5deg]"></div>
+                            <div class="absolute top-[52%] left-0 w-full h-[1px] bg-white rotate-[-5deg]"></div>
+                            <div class="absolute top-[48%] left-0 w-full h-[2px] bg-amber-200 rotate-[-5deg]"></div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-200 text-[10px] font-bold uppercase tracking-widest border border-yellow-500/20">
+                                    Hành tinh có vành đai
+                                </span>
+                            </div>
+                            
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">
+                                Vành đai rộng 280,000 km nhưng chỉ dày <span class="text-yellow-200 font-bold">10–100 mét</span>. Nếu thu nhỏ vành đai xuống cỡ một tờ giấy A4, nó còn <span class="text-yellow-200">mỏng hơn cả tờ giấy</span> đó.
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="glass-card bg-white/5 p-6 rounded-2xl border border-white/5 flex items-center gap-5">
+                                    <div class="w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 shrink-0">
+                                        <i data-lucide="moon" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Số mặt trăng</p>
+                                        <p class="text-3xl font-black text-white leading-tight">146</p>
+                                        <p class="text-[10px] text-yellow-500/60 uppercase">Nhiều nhất hệ Mặt Trời</p>
+                                    </div>
+                                </div>
+                
+                                <div class="glass-card bg-white/5 p-6 rounded-2xl border border-white/5 flex items-center gap-5">
+                                    <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0">
+                                        <i data-lucide="layers" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-tighter">Vệ tinh Titan</p>
+                                        <p class="text-xl font-bold text-white">Khí quyển dày</p>
+                                        <p class="text-[10px] text-blue-400/60 uppercase">Hơn cả Trái Đất</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-8 rounded-3xl border border-white/5 bg-gradient-to-b from-blue-900/10 to-transparent relative overflow-hidden group">
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-blue-500/20 animate-pulse"></div>
+                
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="relative">
+                                <div class="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-200/20 to-orange-400/20 border border-white/10 flex items-center justify-center group-hover:-translate-y-4 transition-transform duration-1000">
+                                    <i data-lucide="ship" class="w-8 h-8 text-yellow-200/50"></i>
+                                </div>
+                            </div>
+                
+                            <div class="space-y-3">
+                                <h5 class="text-white font-bold text-lg flex items-center gap-2 italic">
+                                    Sự thật kỳ lạ nhất: <span class="text-yellow-200 uppercase text-sm font-black tracking-widest">Hành tinh nổi</span>
+                                </h5>
+                                <p class="text-gray-400 leading-relaxed text-sm">
+                                    Sao Thổ là hành tinh duy nhất nhẹ hơn nước (tỷ trọng 0.687 g/cm³). Nếu bạn có một đại dương đủ khổng lồ, <span class="text-white font-medium">Sao Thổ sẽ nổi lềnh bềnh trên mặt nước</span> như một quả bóng nhựa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <h2>Sao Thiên Vương — hành tinh nghiêng ngã</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group shadow-[0_0_50px_rgba(103,232,249,0.1)]">
+                        <div class="absolute inset-0 pointer-events-none opacity-20">
+                            <div class="absolute top-0 left-1/2 w-[1px] h-full bg-cyan-400 rotate-[98deg] origin-center"></div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-bold uppercase tracking-widest border border-cyan-500/20">
+                                    The Sideways Planet
+                                </span>
+                            </div>
+                            
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">
+                                Sao Thiên Vương quay quanh trục nghiêng <span class="text-cyan-400 font-black">98 độ</span>. Hành tinh này gần như <span class="text-cyan-200 italic">"lăn"</span> quanh Mặt Trời thay vì quay như một con quay thông thường.
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 flex items-center gap-4 transition hover:bg-cyan-500/5">
+                                    <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center shrink-0">
+                                        <i data-lucide="sun" class="text-cyan-300 w-6 h-6 animate-pulse"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-bold text-lg">42 năm</p>
+                                        <p class="text-gray-500 text-xs tracking-tight uppercase">Liên tục hướng về Mặt Trời</p>
+                                    </div>
+                                </div>
+                
+                                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 flex items-center gap-4 transition hover:bg-slate-700/20">
+                                    <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center shrink-0">
+                                        <i data-lucide="moon" class="text-slate-500 w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-bold text-lg">42 năm</p>
+                                        <p class="text-gray-500 text-xs tracking-tight uppercase">Chìm trong bóng tối vĩnh cửu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-tr from-cyan-900/20 to-transparent group overflow-hidden">
+                        <div class="flex flex-col md:flex-row gap-6 items-center relative">
+                            
+                            <div class="relative shrink-0">
+                                <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center group-hover:rotate-12 transition-transform duration-500">
+                                    <i data-lucide="wind" class="w-8 h-8 text-cyan-400/50"></i>
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-4 h-4 bg-white/20 blur-md animate-ping"></div>
+                            </div>
+                
+                            <div class="space-y-2">
+                                <h5 class="text-white font-bold flex items-center gap-2 italic">
+                                    Kỳ lạ về mùi: <span class="text-cyan-400 font-black tracking-tighter uppercase">Trứng thối vũ trụ</span>
+                                </h5>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    Khí quyển chứa đầy <span class="text-white">Hydro sunfua</span>. Nếu có thể đứng ở đó, bạn sẽ ngửi thấy mùi trứng thối cực mạnh. Một hành tinh rực rỡ nhưng mang mùi hương không hề dễ chịu chút nào.
+                                </p>
+                            </div>
+                            
+                            <div class="absolute right-0 top-0 opacity-5 pointer-events-none">
+                                <i data-lucide="beaker" class="w-24 h-24 text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <h2>Sao Hải Vương — hành tinh của những cơn bão điên</h2>
+                <div class="max-w-4xl mx-auto my-12 space-y-6">
+
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 relative overflow-hidden group shadow-[0_0_50px_rgba(30,64,175,0.2)]">
+                        <div class="absolute inset-0 pointer-events-none opacity-20">
+                            <div class="absolute top-1/3 left-0 w-full h-[1px] bg-blue-400/50 -translate-x-full animate-[slide_2s_linear_infinite]"></div>
+                            <div class="absolute top-2/3 left-0 w-full h-[1px] bg-blue-300/30 -translate-x-full animate-[slide_3s_linear_infinite_1s]"></div>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 text-[10px] font-bold uppercase tracking-widest border border-blue-600/30">
+                                    The Windiest World
+                                </span>
+                            </div>
+                            
+                            <p class="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">
+                                Ở nơi ánh sáng chỉ bằng 1/900 so với Trái Đất, Sao Hải Vương sở hữu những cơn gió <span class="text-blue-400 font-black italic">siêu thanh</span> lên đến 2,100 km/h — một bí ẩn năng lượng chưa có lời giải.
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:bg-blue-600/10 transition-colors">
+                                    <p class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2">Khoảng cách</p>
+                                    <p class="text-3xl font-black text-white italic">4.5 <span class="text-lg font-normal opacity-40">tỷ km</span></p>
+                                    <p class="text-gray-500 text-xs mt-1">~30 đơn vị thiên văn</p>
+                                </div>
+                
+                                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:bg-blue-600/10 transition-colors">
+                                    <p class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2">Một năm</p>
+                                    <p class="text-3xl font-black text-white italic">165 <span class="text-lg font-normal opacity-40">năm</span></p>
+                                    <p class="text-gray-500 text-xs mt-1">Tính theo giờ Trái Đất</p>
+                                </div>
+                
+                                <div class="p-5 bg-blue-600/10 rounded-2xl border border-blue-500/20 group">
+                                    <p class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2 flex items-center gap-2">
+                                        <i data-lucide="wind" class="w-3 h-3 animate-bounce"></i> Tốc độ gió
+                                    </p>
+                                    <p class="text-3xl font-black text-white italic">2,100</p>
+                                    <p class="text-gray-500 text-xs mt-1">Gấp 6 lần bão mạnh nhất TĐ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-br from-blue-900/20 to-transparent">
+                        <div class="flex items-start gap-5">
+                            <div class="p-4 rounded-2xl bg-blue-500/10 text-blue-400 shrink-0">
+                                <i data-lucide="help-circle" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold mb-1 italic">Năng lượng bí ẩn</h5>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    Dù nằm ở nơi xa xôi và lạnh lẽo nhất, Sao Hải Vương lại phát tỏa nhiệt lượng <span class="text-white font-medium">nhiều gấp 2.6 lần</span> lượng nhiệt nó nhận được từ Mặt Trời. Chính nguồn nhiệt nội tại này đã thúc đẩy những cơn bão kinh hoàng nhất trong hệ Mặt Trời.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <style>
+                @keyframes slide {
+                    0% { transform: translateX(-100%); opacity: 0; }
+                    50% { opacity: 0.5; }
+                    100% { transform: translateX(100%); opacity: 0; }
+                }
+                </style>
+
+                <h2>Và còn nhiều hơn thế</h2>
+                <p>Hệ Mặt Trời không kết thúc ở Sao Hải Vương. Phía sau còn có Vành đai Kuiper — nơi Sao Diêm Vương lang thang cùng hàng nghìn thiên thể băng giá. Và xa hơn nữa là Đám mây Oort — nguồn gốc của hầu hết sao chổi — trải dài đến tận 100,000 đơn vị thiên văn, gần bằng 1/4 khoảng cách tới ngôi sao gần nhất.</p>
+                <div class="max-w-4xl mx-auto my-16 space-y-12">
+    
+                    <div class="glass-card p-10 rounded-[2.5rem] border border-white/10 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+                            <div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                            <div class="absolute top-1/2 left-[10%] w-2 h-2 bg-white rounded-full blur-[2px] animate-[ping_3s_infinite]"></div>
+                        </div>
+                
+                        <div class="relative z-10 flex flex-col items-center text-center space-y-6">
+                            <div class="p-4 rounded-full bg-white/5 border border-white/10">
+                                <i data-lucide="send" class="w-8 h-8 text-gray-300 group-hover:translate-x-12 group-hover:-translate-y-12 transition-all duration-1000 ease-in-out"></i>
+                            </div>
+                            
+                            <h2 class="text-3xl font-black tracking-tighter text-white">VOYAGER 1</h2>
+                            
+                            <p class="text-gray-400 leading-relaxed max-w-2xl">
+                                Phóng năm 1977, bay với tốc độ <span class="text-white font-bold">61,000 km/h</span>, và đến nay mới thực sự rời khỏi tầm ảnh hưởng của Mặt Trời. Sau gần nửa thế kỷ, nó vẫn là "đại sứ" xa xôi nhất của nhân loại trong không gian thẳm thẳm.
+                            </p>
+                
+                            <div class="flex gap-8 pt-4">
+                                <div class="text-center">
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Khởi hành</p>
+                                    <p class="text-xl font-bold text-white">1977</p>
+                                </div>
+                                <div class="w-px h-10 bg-white/10"></div>
+                                <div class="text-center">
+                                    <p class="text-[10px] text-gray-500 uppercase tracking-widest">Tình trạng</p>
+                                    <p class="text-xl font-bold text-emerald-500 uppercase text-sm">Interstellar Space</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <footer class="text-center space-y-6 pt-10 pb-20">
+                        <div class="flex justify-center gap-6 opacity-30 group-hover:opacity-100 transition-opacity">
+                            <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">NASA</span>
+                            <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">JPL</span>
+                            <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">ESA</span>
+                            <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">NATURE</span>
+                        </div>
+                        
+                        <div class="glass-card inline-block px-6 py-3 rounded-full border border-white/5 bg-white/[0.02]">
+                            <p class="text-[11px] text-gray-500 leading-relaxed">
+                                Dữ liệu tổng hợp từ các nguồn uy tín nhất về thiên văn học. 
+                                <span class="text-gray-300">Cập nhật kiến thức khoa học 2024–2025.</span>
+                            </p>
+                        </div>
+                
+                    </footer>
+                </div>
+
+
+            </div>
+
+            <footer class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-6">
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-green transition-colors">
+                        <i data-lucide="heart" class="w-5 h-5"></i> <span></span>
+                    </button>
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-cyan transition-colors">
+                        <i data-lucide="message-square" class="w-5 h-5"></i> <span></span>
+                    </button>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-500 text-sm font-mono mr-2 uppercase tracking-tighter">Share:</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </footer>
+
+        </article>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

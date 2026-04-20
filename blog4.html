@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nmdat | Astronomy</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: { green: '#00ff88', purple: '#b829f7', cyan: '#00d9ff', orange: '#ff8800' },
+                        dark: { 900: '#0a0a0f', 800: '#12121a', 700: '#1a1a2e' }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0f; color: #ffffff; }
+        .bg-fixed-img {
+            position: fixed; inset: 0; z-index: -1;
+            background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4628c6bb5?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            filter: blur(10px) brightness(0.2); transform: scale(1.1);
+        }
+        .glass { background: rgba(18, 18, 26, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .blog-container { background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 136, 0, 0.2); }
+        .gradient-text { background: linear-gradient(135deg, #ff8800 0%, #ffcc00 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .prose p { color: #cbd5e1; line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .prose h2 { color: #ff8800; font-weight: 700; font-size: 1.875rem; margin-top: 2.5rem; margin-bottom: 1.25rem; font-family: 'JetBrains Mono', monospace; }
+        code { font-family: 'JetBrains Mono', monospace; background: rgba(255, 136, 0, 0.1); padding: 0.2rem 0.4rem; border-radius: 4px; color: #ffaa00; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <div class="bg-fixed-img"></div>
+    
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center text-sm font-mono">
+            <a href="index.html" class="text-gray-400 hover:text-neon-orange transition-colors flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                <span class="font-mono text-sm">Quay lại Portfolio</span>
+            </a>
+            <div class="font-mono font-bold text-white">
+                <span class="text-neon-green">&lt;</span>
+                <span class="gradient-text">nmdat</span>
+                <span class="text-neon-purple">/&gt;</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-32 pb-24 px-6">
+        <article class="max-w-4xl mx-auto blog-container rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(255,136,0,0.1)]">
+            <header class="mb-12">
+                <span class="px-3 py-1 rounded-full bg-neon-orange/10 text-neon-orange text-xs font-mono border border-neon-orange/20">Thiên văn học</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white mt-6 mb-8 leading-tight">
+                    Hố đen: <span class="gradient-text">Nơi vật lý sụp đổ và thời gian bẻ cong</span>
+                </h1>
+                <div class="flex items-center gap-6 border-b border-white/5 pb-8 text-gray-400 font-mono text-sm">
+                    <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-neon-orange"></i> 19.4.2026</span>
+                    <span class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4"></i> 5 phút đọc</span>
+                </div>
+
+                <div class="flex items-center gap-4 border-y border-white/10 py-6">
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-neon-green to-neon-purple p-[2px]">
+                        <div class="w-full h-full rounded-full bg-dark-900 flex items-center justify-center">
+                            <i data-lucide="user" class="w-7 h-7 text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-lg">Nguyễn Minh Đạt</p>
+                        <p class="text-neon-cyan font-mono text-xs uppercase tracking-widest">nmdat</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="prose max-w-none text-gray-300">
+                <p>Hố đen không phải "cái lỗ hút mọi thứ" như bạn thường hình dung. Chúng là vết nứt trong cấu trúc không-thời gian — nơi các phương trình vật lý chúng ta biết đều ngừng hoạt động. Và chúng kỳ lạ hơn bất kỳ thứ gì khoa học viễn tưởng từng mô tả.</p>
+                
+                <h2>Hố đen thực ra là gì?</h2>
+                <p>Hãy bắt đầu từ định nghĩa chính xác: hố đen là vùng không-thời gian nơi lực hấp dẫn mạnh đến mức không có gì thoát ra được — kể cả ánh sáng. Ranh giới không thể quay lại đó có tên là chân trời sự kiện (event horizon).</p>
+
+                <div class="max-w-4xl mx-auto my-16 space-y-8">
+
+                    <div class="glass-card p-10 rounded-[3rem] border border-white/10 relative overflow-hidden group shadow-[0_0_100px_rgba(255,255,255,0.05)] bg-black">
+                        <div class="absolute inset-0 pointer-events-none">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-white/5 rounded-full animate-[ping_10s_linear_infinite]"></div>
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] border border-white/10 rounded-full animate-[ping_15s_linear_infinite_reverse]"></div>
+                        </div>
+                        
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="w-24 h-24 rounded-full bg-black border-4 border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.1)] flex items-center justify-center mb-8 relative group-hover:scale-95 transition-transform duration-700">
+                                <div class="w-1 h-1 bg-white rounded-full animate-pulse shadow-[0_0_10px_white]"></div>
+                                <div class="absolute inset-0 rounded-full border border-white/5 group-hover:scale-125 transition-transform duration-1000"></div>
+                            </div>
+                
+                            <h2 class="text-xs font-black tracking-[0.5em] text-gray-500 uppercase mb-4">Điểm kỳ dị</h2>
+                            <p class="text-xl md:text-2xl font-light text-gray-200 leading-relaxed max-w-2xl italic">
+                                Hố đen không phải một vật thể, mà là một vùng không gian nơi các phương trình vật lý hiện đại đều <span class="text-white font-bold">"vỡ vụn"</span>.
+                            </p>
+                        </div>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="glass-card p-8 rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent">
+                            <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-4">Bán kính Schwarzschild</p>
+                            <div class="py-6 flex justify-center">
+                                <span class="text-3xl font-serif italic text-white tracking-widest leading-none">
+                                    r = 2GM/c²
+                                </span>
+                            </div>
+                            <p class="text-gray-500 text-xs leading-relaxed mt-4">
+                                Đây là công thức xác định kích thước chân trời sự kiện của bất kỳ khối lượng nào trước khi nó sụp đổ hoàn toàn.
+                            </p>
+                        </div>
+                
+                        <div class="glass-card p-8 rounded-3xl border border-white/5 flex flex-col justify-center space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-4 h-4 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+                                <div>
+                                    <p class="text-white font-bold leading-none">Trái Đất</p>
+                                    <p class="text-gray-500 text-[11px] mt-1 italic">Nén xuống cỡ viên bi (9mm)</p>
+                                </div>
+                            </div>
+                            <div class="h-[1px] w-full bg-white/5"></div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 rounded-full border-2 border-orange-500/50 flex items-center justify-center">
+                                    <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                                </div>
+                                <div>
+                                    <p class="text-white font-bold leading-none">Mặt Trời</p>
+                                    <p class="text-gray-500 text-[11px] mt-1 italic">Nén xuống còn ~3km</p>
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                
+                    <div class="text-center py-6 border-t border-white/5">
+                        <p class="text-gray-600 text-[10px] uppercase tracking-[0.3em]">Mật độ vô hạn — Thời gian ngừng lại</p>
+                    </div>
+                </div>
+
+                <h2>Ba loại hố đen chính</h2>
+                <div class="max-w-4xl mx-auto my-16 space-y-6">
+    
+                    <div class="text-center mb-10">
+                        <h3 class="text-white text-3xl font-black tracking-tighter italic">PHÂN LOẠI HỐ ĐEN</h3>
+                        <p class="text-gray-500 text-sm mt-2 uppercase tracking-widest">Dựa trên khối lượng mặt trời M☉</p>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-b from-blue-500/[0.02] to-transparent hover:border-blue-500/30 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                                    <i data-lucide="star" class="w-5 h-5 text-blue-400"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-gray-500 uppercase">Stellar</span>
+                            </div>
+                            <h4 class="text-white font-bold text-lg mb-1">Hố đen sao</h4>
+                            <p class="text-blue-400 font-black text-2xl mb-4">3–100 M☉</p>
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                Kết quả từ cái chết của các ngôi sao khổng lồ qua vụ nổ <span class="text-gray-300 italic">Supernova</span>. Có hàng trăm triệu cái trong Ngân Hà.
+                            </p>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-b from-purple-500/[0.02] to-transparent hover:border-purple-500/30 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center">
+                                    <i data-lucide="scan" class="w-5 h-5 text-purple-400"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-gray-500 uppercase">Intermediate</span>
+                            </div>
+                            <h4 class="text-white font-bold text-lg mb-1">Hố đen trung bình</h4>
+                            <p class="text-purple-400 font-black text-2xl mb-4">100–10⁵ M☉</p>
+                            <p class="text-gray-500 text-xs leading-relaxed italic">
+                                Bí ẩn nhất và ít được xác nhận nhất. Có thể hình thành từ sự sáp nhập của các hố đen nhỏ hơn.
+                            </p>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-gradient-to-b from-red-500/[0.02] to-transparent hover:border-red-500/30 transition-all group">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
+                                    <i data-lucide="venn-diagram" class="w-5 h-5 text-red-400"></i>
+                                </div>
+                                <span class="text-[10px] font-bold text-gray-500 uppercase">Supermassive</span>
+                            </div>
+                            <h4 class="text-white font-bold text-lg mb-1">Hố đen siêu khối</h4>
+                            <p class="text-red-400 font-black text-2xl mb-4">10⁶–10¹⁰ M☉</p>
+                            <p class="text-gray-500 text-xs leading-relaxed">
+                                Nằm ở tâm thiên hà. <span class="text-gray-300 font-bold italic text-[10px]">Sagittarius A*</span> nặng gấp 4 triệu lần Mặt Trời.
+                            </p>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-8 rounded-3xl border-2 border-yellow-500/20 bg-yellow-500/[0.02] relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4">
+                            <i data-lucide="eye" class="text-yellow-500/20 w-16 h-16 rotate-12 group-hover:rotate-0 transition-transform duration-700"></i>
+                        </div>
+                        
+                        <div class="relative z-10 flex gap-6 items-start">
+                            <div class="shrink-0 p-3 bg-yellow-500/10 rounded-2xl">
+                                <i data-lucide="telescope" class="text-yellow-500 w-6 h-6"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <h5 class="text-yellow-500 font-black tracking-widest text-xs uppercase italic">Phát hiện chấn động 2023 | JWST</h5>
+                                <p class="text-white text-lg font-medium leading-relaxed">
+                                    Hố đen siêu khối xuất hiện chỉ <span class="text-yellow-500">400 triệu năm</span> sau Big Bang. 
+                                </p>
+                                <p class="text-gray-400 text-sm italic">
+                                    Đây là một thách thức cực lớn đối với mọi mô hình vũ trụ hiện tại. Chúng ta vẫn chưa hiểu làm thế nào chúng có thể "lớn nhanh" như vậy trong một thời gian ngắn kỷ lục.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Bên trong chân trời sự kiện — thời gian bị bẻ cong</h2>
+                <div class="max-w-4xl mx-auto my-16 space-y-8">
+    
+                    <div class="glass-card p-8 rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-violet-900/10 to-transparent">
+                        <h3 class="text-violet-400 font-black tracking-widest text-xs uppercase mb-4 flex items-center gap-2">
+                            <i data-lucide="hourglass"></i> Giãn nở thời gian (Time Dilation)
+                        </h3>
+                        <p class="text-xl md:text-2xl text-white font-light leading-relaxed">
+                            Thuyết Tương đối dự đoán: <span class="text-violet-500 font-bold">Lực hấp dẫn càng mạnh, thời gian chạy càng chậm.</span> Gần hố đen, thời gian không còn trôi theo cách chúng ta biết.
+                        </p>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 relative group overflow-hidden">
+                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                                <i data-lucide="eye" class="w-12 h-12 text-white"></i>
+                            </div>
+                            <h4 class="text-white font-bold mb-4 flex items-center gap-2">
+                                Bạn quan sát từ xa
+                            </h4>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3 text-sm">
+                                    <span class="text-violet-500 font-bold">01.</span>
+                                    <p class="text-gray-400 font-medium">Người bạn di chuyển <span class="text-white italic underline decoration-violet-500/50">chậm dần</span> khi tiến gần chân trời sự kiện.</p>
+                                </li>
+                                <li class="flex gap-3 text-sm">
+                                    <span class="text-violet-500 font-bold">02.</span>
+                                    <p class="text-gray-400 font-medium">Ánh sáng bị <span class="text-red-500">kéo giãn (Redshift)</span>: người đó mờ dần và đỏ rực.</p>
+                                </li>
+                                <li class="flex gap-3 text-sm">
+                                    <span class="text-violet-500 font-bold">03.</span>
+                                    <p class="text-gray-400 font-medium">Bạn thấy họ <span class="text-white">đứng yên mãi mãi</span> tại biên giới, không bao giờ vượt qua.</p>
+                                </li>
+                            </ul>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-white/[0.02] relative group">
+                            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
+                                <i data-lucide="user" class="w-12 h-12 text-white"></i>
+                            </div>
+                            <h4 class="text-white font-bold mb-4">Người rơi vào</h4>
+                            <div class="space-y-4">
+                                <p class="text-sm text-gray-400 leading-relaxed">
+                                    Họ vượt qua chân trời sự kiện <span class="text-white">hoàn toàn bình thường</span>, không cảm nhận bất kỳ sự chậm lại nào của thời gian.
+                                </p>
+                                <div class="p-4 bg-red-950/20 border border-red-900/20 rounded-xl">
+                                    <p class="text-xs text-red-400 leading-relaxed italic">
+                                        Kết cục: Bị kéo về phía điểm kỳ dị một cách không thể tránh khỏi.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-8 rounded-3xl border border-yellow-500/10 bg-gradient-to-r from-transparent via-yellow-500/[0.03] to-transparent relative group">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="shrink-0">
+                                <div class="w-16 h-16 rounded-full border-2 border-dashed border-yellow-500/30 flex items-center justify-center animate-[spin_20s_linear_infinite]">
+                                    <i data-lucide="binary" class="text-yellow-500 w-8 h-8"></i>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <h5 class="text-yellow-500 font-black tracking-widest text-xs uppercase italic">Nghịch lý thông tin (Information Paradox)</h5>
+                                <p class="text-gray-300 text-lg leading-relaxed">
+                                    Nếu bạn rơi vào, mọi thông tin về bạn biến mất mãi mãi — vi phạm nguyên lý: <span class="text-white font-bold underline decoration-yellow-500/50">Thông tin không thể bị hủy diệt.</span>
+                                </p>
+                                <p class="text-gray-500 text-xs italic">
+                                    Sự mâu thuẫn lớn nhất chưa thể giải quyết giữa Thuyết tương đối và Cơ học lượng tử.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                
+                <h2>Bức xạ Hawking — hố đen không sống mãi mãi</h2>
+                <p>Năm 1974, Stephen Hawking đưa ra dự đoán gây chấn động: hố đen thực ra đang phát xạ — và dần dần bốc hơi. Cơ chế này xuất phát từ cơ học lượng tử: các cặp hạt-phản hạt liên tục xuất hiện và biến mất ngay ở chân trời sự kiện. Đôi khi một hạt rơi vào trong, hạt còn lại thoát ra ngoài — hố đen mất năng lượng.</p>
+                <div class="max-w-4xl mx-auto my-16 space-y-8">
+
+                    <div class="text-center space-y-2 mb-10">
+                        <h3 class="text-white text-3xl font-black tracking-tighter italic uppercase">Sự bốc hơi vĩ đại</h3>
+                        <p class="text-gray-500 text-sm tracking-widest uppercase">Lý thuyết của Stephen Hawking</p>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <div class="glass-card p-8 rounded-3xl border border-white/10 bg-gradient-to-br from-gray-500/[0.05] to-transparent relative group overflow-hidden">
+                            <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-all"></div>
+                            
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="p-2 bg-white/10 rounded-lg">
+                                    <i data-lucide="waves" class="w-5 h-5 text-white animate-pulse"></i>
+                                </div>
+                                <h4 class="text-white font-bold tracking-wide">Bức xạ Hawking</h4>
+                            </div>
+                            
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Theo cơ học lượng tử, hố đen không hoàn toàn "đen". chúng phát ra các hạt nhiệt gọi là bức xạ Hawking và dần mất đi khối lượng.
+                            </p>
+                
+                            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20">
+                                <span class="w-2 h-2 bg-red-500 rounded-full animate-ping"></span>
+                                <span class="text-red-400 text-[10px] font-bold uppercase tracking-tighter">Chưa quan sát được trực tiếp</span>
+                            </div>
+                            <p class="text-gray-600 text-[10px] mt-3 italic">Quá yếu để đo bằng công nghệ hiện tại (2025-2026).</p>
+                        </div>
+                
+                        <div class="glass-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between">
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mb-2">Thời gian bốc hơi (Hố đen $1 M_\odot$)</p>
+                                    <p class="text-4xl font-black text-white tracking-tighter">10⁶⁷ <span class="text-lg font-light text-gray-500">năm</span></p>
+                                </div>
+                                
+                                <div class="h-px w-full bg-white/10"></div>
+                
+                                <div>
+                                    <p class="text-[10px] text-gray-500 font-black uppercase tracking-[0.2em] mb-2">Tuổi vũ trụ hiện tại</p>
+                                    <p class="text-3xl font-bold text-gray-300 tracking-tighter">13.8 tỷ năm <span class="text-xs font-normal opacity-50">(1.38×10¹⁰ năm)</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-8 rounded-3xl border border-orange-500/10 bg-gradient-to-r from-orange-500/[0.02] to-transparent relative group">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="shrink-0 relative">
+                                <div class="w-16 h-16 rounded-full border border-orange-500/30 flex items-center justify-center group-hover:scale-150 transition-transform duration-1000">
+                                    <i data-lucide="zap" class="text-orange-500 w-8 h-8"></i>
+                                </div>
+                                <div class="absolute inset-0 bg-orange-500/20 blur-xl scale-0 group-hover:scale-100 transition-transform duration-700"></div>
+                            </div>
+                
+                            <div class="space-y-3">
+                                <h5 class="text-orange-500 font-black tracking-widest text-xs uppercase italic">Nghịch lý kích thước</h5>
+                                <p class="text-white text-lg font-medium leading-relaxed">
+                                    Hố đen nhỏ bốc hơi <span class="text-orange-400">nhanh hơn</span> và ở giây cuối cùng, chúng phát nổ với năng lượng khổng lồ. 
+                                </p>
+                                <p class="text-gray-500 text-sm italic">
+                                    Trong khi đó, những "gã khổng lồ" như Sagittarius A* sẽ tồn tại lâu hơn tuổi hiện tại của vũ trụ hàng tỷ tỷ lần.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>   
+                <div class="px-2 opacity-40 hover:opacity-100 transition-opacity duration-300">
+                    <p class="text-[8px] sm:text-[9px] text-gray-400 font-sans italic leading-tight">
+                        * Nguồn: Hawking, S.W. — "Particle Creation by Black Holes" (1975);
+                    </p>
+                </div>
+
+                <h2>Lần đầu nhân loại "nhìn" thấy hố đen</h2>
+                <div class="max-w-4xl mx-auto my-16 space-y-10">
+    
+                    <div class="glass-card p-8 rounded-[2.5rem] border border-white/10 bg-gradient-to-r from-orange-500/5 to-transparent relative overflow-hidden">
+                        <div class="flex flex-col md:flex-row gap-8 items-center">
+                            <div class="shrink-0 relative">
+                                <div class="w-20 h-20 rounded-full border-2 border-dashed border-orange-500/40 animate-[spin_30s_linear_infinite] flex items-center justify-center">
+                                    <i data-lucide="layout-grid" class="w-8 h-8 text-orange-400"></i>
+                                </div>
+                                <div class="absolute inset-0 bg-orange-500/10 blur-2xl rounded-full"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-white text-2xl font-black italic">MẠNG LƯỚI TOÀN CẦU (EHT)</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    Một mạng lưới kính thiên văn trải khắp Trái Đất, hoạt động đồng bộ để tạo ra một chiếc kính viễn vọng ảo có <span class="text-orange-400 font-bold">kích thước bằng cả hành tinh</span>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="grid grid-cols-1 gap-6 relative">
+                        <div class="absolute left-[39px] top-0 bottom-0 w-px bg-dashed bg-gradient-to-b from-orange-500 via-blue-500 to-purple-500 opacity-20 hidden md:block"></div>
+                
+                        <div class="relative flex flex-col md:flex-row gap-8 group">
+                            <div class="hidden md:flex shrink-0 w-20 h-20 rounded-2xl bg-blue-500/10 border border-blue-500/20 items-center justify-center z-10 bg-black">
+                                <span class="text-blue-400 font-black">2015</span>
+                            </div>
+                            <div class="glass-card p-6 rounded-3xl border border-white/5 flex-1 hover:border-blue-500/30 transition-all">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i data-lucide="activity" class="text-blue-400 w-5 h-5"></i>
+                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">LIGO: Sóng hấp dẫn</h4>
+                                </div>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Phát hiện tín hiệu từ hai hố đen sáp nhập cách đây 1.3 tỷ năm ánh sáng. Vụ nổ chỉ kéo dài <span class="text-white font-bold">0.2 giây</span> nhưng giải phóng năng lượng lớn hơn tổng ánh sáng của toàn bộ ngôi sao trong vũ trụ cộng lại.
+                                </p>
+                            </div>
+                        </div>
+                
+                        <div class="relative flex flex-col md:flex-row gap-8 group">
+                            <div class="hidden md:flex shrink-0 w-20 h-20 rounded-2xl bg-orange-500/10 border border-orange-500/20 items-center justify-center z-10 bg-black">
+                                <span class="text-orange-400 font-black">2019</span>
+                            </div>
+                            <div class="glass-card p-6 rounded-3xl border border-white/5 flex-1 hover:border-orange-500/30 transition-all">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i data-lucide="camera" class="text-orange-400 w-5 h-5"></i>
+                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Bức ảnh đầu tiên: M87*</h4>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-6">
+                                    <div class="space-y-2">
+                                        <p class="text-gray-400 text-sm leading-relaxed">
+                                            Nhân loại lần đầu tiên nhìn thấy "vòng sáng cam" của hố đen M87*. 
+                                        </p>
+                                        <div class="flex gap-4">
+                                            <div>
+                                                <p class="text-[10px] text-gray-500 uppercase font-bold">Khoảng cách</p>
+                                                <p class="text-white font-bold">55 Tr. năm ánh sáng</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-[10px] text-gray-500 uppercase font-bold">Khối lượng</p>
+                                                <p class="text-white font-bold">6.5 Tỷ M☉</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="relative flex flex-col md:flex-row gap-8 group">
+                            <div class="hidden md:flex shrink-0 w-20 h-20 rounded-2xl bg-purple-500/10 border border-purple-500/20 items-center justify-center z-10 bg-black">
+                                <span class="text-purple-400 font-black">2022</span>
+                            </div>
+                            <div class="glass-card p-6 rounded-3xl border border-white/5 flex-1 hover:border-purple-500/30 transition-all">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <i data-lucide="center-horizontal" class="text-purple-400 w-5 h-5"></i>
+                                    <h4 class="text-white font-bold uppercase text-xs tracking-widest">Tâm Ngân Hà: Sgr A*</h4>
+                                </div>
+                                <p class="text-gray-400 text-sm leading-relaxed italic">
+                                    Công bố hình ảnh chân thực về "gã khổng lồ" ngủ yên ngay tại trung tâm thiên hà của chúng ta.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Hố đen gần Trái Đất nhất</h2>
+                <div class="max-w-4xl mx-auto my-16 space-y-8">
+    
+                    <div class="glass-card p-8 rounded-[2.5rem] border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.03] to-transparent relative overflow-hidden group">
+                        <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-emerald-500/5 blur-[100px]"></div>
+                        
+                        <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                            <div class="shrink-0 text-center">
+                                <div class="w-24 h-24 rounded-full border-2 border-dashed border-emerald-500/30 flex items-center justify-center mb-3">
+                                    <i data-lucide="map-pin" class="w-8 h-8 text-emerald-500 animate-bounce"></i>
+                                </div>
+                                <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest italic">Gaia BH1</p>
+                            </div>
+                
+                            <div class="space-y-4">
+                                <h3 class="text-white text-xl font-bold italic">Hố đen gần nhất: <span class="text-emerald-400">1,560 năm ánh sáng</span></h3>
+                                <p class="text-gray-400 text-sm leading-relaxed">
+                                    Được phát hiện vào năm 2022 trong chòm sao Kính Viễn Vọng. Để dễ hình dung: Với tốc độ của tàu Voyager 1, chúng ta cần tới <span class="text-white font-bold">26 triệu năm</span> để gõ cửa "người hàng xóm" này.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="glass-card p-8 rounded-3xl border border-white/10 bg-black relative group overflow-hidden">
+                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.02)_0%,_transparent_70%)]"></div>
+                        
+                        <div class="relative z-10">
+                            <h4 class="text-xs font-black tracking-[0.3em] text-gray-500 uppercase mb-6 flex items-center gap-2">
+                                <i data-lucide="shield-check" class="text-emerald-500 w-4 h-4"></i> Giải mã hiểu lầm
+                            </h4>
+                            
+                            <p class="text-xl md:text-2xl font-light text-white leading-relaxed mb-8">
+                                Hố đen không "hút" mọi thứ như máy hút bụi. Nếu Mặt Trời biến thành hố đen có cùng khối lượng...
+                            </p>
+                
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="p-5 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
+                                    <p class="text-emerald-500 text-[10px] font-black uppercase tracking-widest mb-2">Quỹ đạo Trái Đất</p>
+                                    <p class="text-white text-sm font-medium">Vẫn giữ nguyên. Trái Đất tiếp tục bay trên quỹ đạo cũ vì lực hấp dẫn không đổi.</p>
+                                </div>
+                
+                                <div class="p-5 bg-red-500/5 rounded-2xl border border-red-500/10">
+                                    <p class="text-red-500 text-[10px] font-black uppercase tracking-widest mb-2">Sự sống</p>
+                                    <p class="text-white text-sm font-medium">Hành tinh sẽ mất toàn bộ ánh sáng và nhiệt, trở nên lạnh giá và tối tăm.</p>
+                                </div>
+                            </div>
+                
+                            <p class="text-gray-500 text-xs mt-8 italic text-center">
+                                "Lực hấp dẫn phụ thuộc vào khối lượng, không phải kích thước của vật thể."
+                            </p>
+                        </div>
+                    </div>
+                
+                </div>
+                
+                <h2>Câu hỏi lớn vẫn còn bỏ ngỏ</h2>
+                <div class="max-w-4xl mx-auto my-16 space-y-8">
+    
+                    <div class="text-center space-y-4">
+                        <h3 class="text-white text-3xl font-black tracking-tighter">NHỮNG CÂU HỎI CHƯA CÓ LỜI GIẢI</h3>
+                        <p class="text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
+                            Hố đen là nơi duy nhất trong vũ trụ bắt buộc Thuyết Tương đối và Cơ học Lượng tử phải làm việc cùng nhau — và tại đó, chúng mâu thuẫn.
+                        </p>
+                    </div>
+                
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all">
+                            <div class="flex justify-between items-center mb-3">
+                                <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Singularity</p>
+                                <i data-lucide="infinity" class="text-gray-600 w-4 h-4"></i>
+                            </div>
+                            <h5 class="text-white font-bold mb-2">Điểm kỳ dị: Mật độ vô cực?</h5>
+                            <p class="text-xs text-gray-500 leading-relaxed italic">
+                                Liệu mật độ có thực sự là vô cực, hay vật lý lượng tử sẽ can thiệp trước khi điểm đó hình thành?
+                            </p>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all">
+                            <div class="flex justify-between items-center mb-3">
+                                <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Information Paradox</p>
+                                <i data-lucide="database-zap" class="text-gray-600 w-4 h-4"></i>
+                            </div>
+                            <h5 class="text-white font-bold mb-2">Thông tin có mất mãi mãi?</h5>
+                            <p class="text-xs text-gray-500 leading-relaxed italic">
+                                Sự mâu thuẫn giữa việc "thông tin không thể bị hủy diệt" (Lượng tử) và "không gì thoát ra được" (Tương đối).
+                            </p>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all">
+                            <div class="flex justify-between items-center mb-3">
+                                <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">Primordial BH</p>
+                                <i data-lucide="atom" class="text-gray-600 w-4 h-4"></i>
+                            </div>
+                            <h5 class="text-white font-bold mb-2">Vật chất tối?</h5>
+                            <p class="text-xs text-gray-500 leading-relaxed italic">
+                                Có những hố đen siêu nhỏ hình thành ngay từ Big Bang không? Liệu chúng có phải là vật chất tối?
+                            </p>
+                        </div>
+                
+                        <div class="glass-card p-6 rounded-3xl border border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all">
+                            <div class="flex justify-between items-center mb-3">
+                                <p class="text-[10px] text-gray-500 font-black uppercase tracking-widest">The Core</p>
+                                <i data-lucide="help-circle" class="text-gray-600 w-4 h-4"></i>
+                            </div>
+                            <h5 class="text-white font-bold mb-2">Bên trong là gì?</h5>
+                            <p class="text-xs text-gray-500 leading-relaxed italic">
+                                Không ai biết. Không có bất kỳ thông tin nào có thể thoát ra để kể lại câu chuyện bên trong.
+                            </p>
+                        </div>
+                    </div>
+                
+                    <div class="p-8 border border-white/5 rounded-3xl bg-gradient-to-r from-blue-500/[0.03] via-transparent to-violet-500/[0.03]">
+                        <div class="flex flex-col md:flex-row gap-8 items-center justify-between">
+                            <div class="space-y-2">
+                                <h5 class="text-white font-bold">Lý thuyết Thống nhất (Theory of Everything)</h5>
+                                <p class="text-gray-400 text-sm max-w-md italic">
+                                    Chúng ta cần một "cây cầu" kết nối hai thế giới. Cho đến lúc đó, hố đen vẫn là bức tường ngăn cách nhân loại với sự thật cuối cùng về vũ trụ.
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="text-blue-400 text-[10px] font-bold">TƯƠNG ĐỐI</div>
+                                <div class="h-px w-12 bg-gradient-to-r from-blue-500 to-violet-500"></div>
+                                <div class="text-violet-400 text-[10px] font-bold">LƯỢNG TỬ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-4xl mx-auto mt-20 mb-32">
+                    <div class="flex items-center gap-4 mb-12">
+                        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                        <i data-lucide="database" class="text-gray-600 w-4 h-4"></i>
+                        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                    </div>
+                <h2>Nguồn</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                        
+                        <div class="glass-card p-5 rounded-2xl border border-white/5 hover:border-blue-500/30 transition-all">
+                            <p class="text-[10px] text-blue-400 font-black uppercase tracking-widest mb-2">Primary Explorer</p>
+                            <h5 class="text-white font-bold text-sm">NASA Black Hole</h5>
+                            <p class="text-gray-500 text-[10px] mt-1 leading-tight">Exploration & Visualization Systems</p>
+                        </div>
+                
+                        <div class="glass-card p-5 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-all">
+                            <p class="text-[10px] text-orange-400 font-black uppercase tracking-widest mb-2">Observation</p>
+                            <h5 class="text-white font-bold text-sm">EHT Collaboration</h5>
+                            <p class="text-gray-500 text-[10px] mt-1 leading-tight">First Images of M87* & Sgr A* (2019-2022)</p>
+                        </div>
+                
+                        <div class="glass-card p-5 rounded-2xl border border-white/5 hover:border-emerald-500/30 transition-all">
+                            <p class="text-[10px] text-emerald-400 font-black uppercase tracking-widest mb-2">Gravitational</p>
+                            <h5 class="text-white font-bold text-sm">LIGO Scientific</h5>
+                            <p class="text-gray-500 text-[10px] mt-1 leading-tight">Gravitational Wave Detection Records</p>
+                        </div>
+                
+                        <div class="glass-card p-5 rounded-2xl border border-white/5 hover:border-yellow-500/30 transition-all">
+                            <p class="text-[10px] text-yellow-500 font-black uppercase tracking-widest mb-2">Deep Space</p>
+                            <h5 class="text-white font-bold text-sm">ESA & JWST Team</h5>
+                            <p class="text-gray-500 text-[10px] mt-1 leading-tight">Early Universe Black Hole Discoveries</p>
+                        </div>
+                    </div>
+                
+                    <div class="text-center space-y-6">
+                        <div class="inline-block relative">
+                            <div class="absolute inset-0 bg-white/5 blur-2xl rounded-full"></div>
+                            <p class="relative z-10 text-gray-400 text-xs tracking-[0.2em] font-light">
+                                DỮ LIỆU ĐƯỢC TỔNG HỢP VÀ KIỂM CHỨNG TÍNH ĐẾN <span class="text-white font-bold">2025–2026</span>
+                            </p>
+                        </div>
+                        
+                        <div class="pt-10">
+                            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                                    class="group relative px-8 py-3 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.05] transition-all">
+                                <span class="text-[10px] text-gray-500 font-black uppercase tracking-[0.3em] group-hover:text-white transition-colors">
+                                    Trở lại vạch xuất phát
+                                </span>
+                                <div class="absolute inset-0 rounded-full overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            
+            </div>
+            
+            <footer class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-6">
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-green transition-colors">
+                        <i data-lucide="heart" class="w-5 h-5"></i> <span></span>
+                    </button>
+                    <button class="flex items-center gap-2 text-gray-400 hover:text-neon-cyan transition-colors">
+                        <i data-lucide="message-square" class="w-5 h-5"></i> <span></span>
+                    </button>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-500 text-sm font-mono mr-2 uppercase tracking-tighter">Share:</span>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </footer>
+        </article>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

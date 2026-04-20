@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nmdat | Portfolio</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            green: '#00ff88',
+                            purple: '#b829f7',
+                            cyan: '#00d9ff'
+                        },
+                        dark: {
+                            900: '#0a0a0f',
+                            800: '#12121a',
+                            700: '#1a1a2e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #00ff88, 0 0 10px #00ff88' },
+                            '100%': { boxShadow: '0 0 20px #00ff88, 0 0 30px #00ff88' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0f;
+            color: #ffffff;
+        }
+        .glass {
+            background: rgba(18, 18, 26, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px -10px rgba(0, 255, 136, 0.2);
+        }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+        .neon-border {
+            position: relative;
+        }
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(45deg, #00ff88, #b829f7);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .neon-border:hover::before {
+            opacity: 0.5;
+        }
+        .video-overlay {
+            background: linear-gradient(to bottom, rgba(10, 10, 15, 0.3), rgba(10, 10, 15, 0.9));
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #00ff88 0%, #00d9ff 50%, #b829f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .skill-bar {
+            background: linear-gradient(90deg, #00ff88 0%, #00d9ff 100%);
+            height: 4px;
+            border-radius: 2px;
+            transition: width 1.5s ease;
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #00ff88, #b829f7);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- Background Video -->
+    <div class="fixed inset-0 w-full h-full z-0">
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="https://res.cloudinary.com/dfonotyfb/video/upload/v1775585556/dds3_1_rqhg7x.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 video-overlay"></div>
+        <div class="absolute inset-0 bg-dark-900/60"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="font-mono text-xl font-bold text-white">
+                    <span class="text-neon-green">&lt;</span>
+                    <span class="gradient-text">nmdat</span>
+                    <span class="text-neon-purple">/&gt;</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#about" class="text-gray-300 hover:text-neon-green transition-colors">Giới thiệu</a>
+                    <a href="#tech-stack" class="text-gray-300 hover:text-neon-green transition-colors">Nền tảng công nghệ</a>
+                    <a href="#projects" class="text-gray-300 hover:text-neon-green transition-colors">Dự án</a>
+                    <a href="#experience" class="text-gray-300 hover:text-neon-green transition-colors">Kinh nghiệm</a>
+                    <a href="#certifications" class="text-gray-300 hover:text-neon-green transition-colors">Chứng chỉ</a>
+                    <a href="#blog" class="text-gray-300 hover:text-neon-green transition-colors">Blog</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-dark-900/95 backdrop-blur-lg hidden flex-col items-center justify-center space-y-8">
+        <a href="#about" class="text-2xl text-white hover:text-neon-green mobile-link">Giới thiệu</a>
+        <a href="#tech-stack" class="text-2xl text-white hover:text-neon-green mobile-link">Nền tảng công nghệ</a>
+        <a href="#projects" class="text-2xl text-white hover:text-neon-green mobile-link">Dự án</a>
+        <a href="#experience" class="text-2xl text-white hover:text-neon-green mobile-link">Kinh nghiệm</a>
+        <a href="#certifications" class="text-2xl text-white hover:text-neon-green mobile-link">Chứng chỉ</a>
+        <a href="#blog" class="text-2xl text-white hover:text-neon-green mobile-link">Blog</a>
+        <button id="close-menu" class="absolute top-6 right-6 text-white">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="mb-6 inline-flex items-center px-4 py-2 rounded-full glass border border-neon-green/30 text-neon-green text-sm font-mono animate-pulse-slow">
+                <span class="w-2 h-2 rounded-full bg-neon-green mr-2 animate-pulse"></span>
+                Sinh viên năm 4 ngành Khoa học Dữ liệu
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+                <span class="block text-white mb-2">Nguyen Minh Dat</span>
+                <span class="gradient-text neon-text font-mono">Data Scientist</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Đam mê trí tuệ nhân tạo/học máy và mô hình dự đoán
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <a href="#projects" class="px-8 py-4 rounded-lg bg-gradient-to-r from-neon-green to-neon-cyan text-dark-900 font-semibold hover:shadow-[0_0_30px_rgba(0,255,136,0.5)] transition-all transform hover:scale-105">
+                    Xem các dự án
+                </a>
+                <a href="#contact" class="px-8 py-4 rounded-lg glass border border-neon-purple/50 text-white hover:border-neon-purple hover:shadow-[0_0_30px_rgba(184,41,247,0.3)] transition-all">
+                    Liên hệ với tôi
+                </a>
+            </div>
+
+
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i data-lucide="chevron-down" class="w-6 h-6 text-neon-green"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative z-10 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        <span class="text-neon-green font-mono text-lg block mb-2">01. Giới thiệu</span>
+                        <span class="gradient-text block mt-2">Nguyễn Minh Đạt</span>
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        Tôi là sinh viên năm cuối ngành Khoa học Dữ liệu với nền tảng vững chắc về phân tích thống kê, máy học và kỹ thuật dữ liệu. Hành trình của tôi tập trung vào việc trích xuất các mẫu có ý nghĩa từ các tập dữ liệu phức tạp và xây dựng các mô hình dự đoán mang lại giá trị kinh doanh.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Hiện đang tập trung vào Học sâu (Deep Learning), Xử lý ngôn ngữ tự nhiên (NLP) và Phân tích dữ liệu lớn (Big Data Analytics).
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 rounded-full glass text-neon-green text-sm border border-neon-green/30">Python</span>
+                        <span class="px-4 py-2 rounded-full glass text-neon-cyan text-sm border border-neon-cyan/30">TensorFlow</span>
+                        <span class="px-4 py-2 rounded-full glass text-neon-purple text-sm border border-neon-purple/30">SQL</span>
+                    </div>
+                </div>
+                <div class="scroll-reveal relative">
+                    <div class="relative w-full aspect-square max-w-md mx-auto">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon-green/20 to-neon-purple/20 rounded-2xl blur-3xl"></div>
+                        <div class="relative glass-card rounded-2xl p-8 h-full flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-neon-green to-neon-purple p-1">
+                                    <div class="w-full h-full rounded-full bg-dark-800 flex items-center justify-center">
+                                        <i data-lucide="user" class="w-16 h-16 text-white"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Nguyễn Minh Đạt</h3>
+                                <p class="text-neon-green font-mono mb-4">Data Science Student</p>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div class="glass rounded-lg p-3">
+                                        <div class="text-neon-cyan font-bold text-xl">3.4/4.0</div>
+                                        <div class="text-gray-400">GPA</div>
+                                    </div>
+                                    <div class="glass rounded-lg p-3">
+                                        <div class="text-neon-purple font-bold text-xl">4+</div>
+                                        <div class="text-gray-400">Dự án</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tech-stack" class="relative z-10 py-24 px-6 bg-dark-800/50 overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-neon-green font-mono text-lg block mb-2">02. Công nghệ</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Nền tảng công nghệ</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-left">
+                    <div class="w-12 h-12 mx-auto mb-3 text-neon-green group-hover:scale-110 transition-transform">
+                        <i data-lucide="code-2" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Python</h3>
+                    <p class="text-xs text-gray-400">Primary Language</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-left" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-neon-cyan group-hover:scale-110 transition-transform">
+                        <i data-lucide="database" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">R</h3>
+                    <p class="text-xs text-gray-400">Statistics</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-left" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-neon-purple group-hover:scale-110 transition-transform">
+                        <i data-lucide="table" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">SQL</h3>
+                    <p class="text-xs text-gray-400">Data Query</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-left" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-orange-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="brain" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">TensorFlow</h3>
+                    <p class="text-xs text-gray-400">Deep Learning</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-left" style="transition-delay: 400ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-red-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="flame" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">PyTorch</h3>
+                    <p class="text-xs text-gray-400">Neural Networks</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-right">
+                    <div class="w-12 h-12 mx-auto mb-3 text-neon-green group-hover:scale-110 transition-transform">
+                        <i data-lucide="binary" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Scikit-Learn</h3>
+                    <p class="text-xs text-gray-400">ML Algorithms</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-right" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-blue-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bar-chart-3" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Pandas</h3>
+                    <p class="text-xs text-gray-400">Data Analysis</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-right" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-purple-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="calculator" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">NumPy</h3>
+                    <p class="text-xs text-gray-400">Scientific</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-right" style="transition-delay: 300ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-yellow-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layout-dashboard" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Power BI</h3>
+                    <p class="text-xs text-gray-400">Visualization</p>
+                </div>
+    
+                <div class="glass-card rounded-xl p-6 text-center group scroll-reveal slide-right" style="transition-delay: 400ms;">
+                    <div class="w-12 h-12 mx-auto mb-3 text-green-600 group-hover:scale-110 transition-transform">
+                        <i data-lucide="git-branch" class="w-full h-full"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-1">Git</h3>
+                    <p class="text-xs text-gray-400">Version Control</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        /* Trạng thái ẩn mặc định */
+        .scroll-reveal.slide-left {
+            opacity: 0;
+            transform: translateX(-100px); /* Đẩy sang trái 100px */
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+    
+        .scroll-reveal.slide-right {
+            opacity: 0;
+            transform: translateX(100px); /* Đẩy sang phải 100px */
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+    
+        /* Trạng thái hiện khi scroll tới (Class .active thường do JS thêm vào) */
+        .scroll-reveal.active {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+    </style>
+
+    <!-- Skills Section -->
+    <section id="skills" class="relative z-10 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="scroll-reveal">
+                    <span class="text-neon-green font-mono text-lg block mb-2">03. Chuyên môn</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Kỹ năng & Năng lực</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Machine Learning</span>
+                                <span class="text-neon-green">90%</span>
+                            </div>
+                            <div class="h-2 bg-dark-700 rounded-full overflow-hidden">
+                                <div class="skill-bar w-[90%]"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Deep Learning & Neural Networks</span>
+                                <span class="text-neon-green">85%</span>
+                            </div>
+                            <div class="h-2 bg-dark-700 rounded-full overflow-hidden">
+                                <div class="skill-bar w-[85%]"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Data Visualization</span>
+                                <span class="text-neon-cyan">88%</span>
+                            </div>
+                            <div class="h-2 bg-dark-700 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-neon-cyan to-blue-500 rounded-full" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Statistical Analysis</span>
+                                <span class="text-neon-purple">72%</span>
+                            </div>
+                            <div class="h-2 bg-dark-700 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-neon-purple to-pink-500 rounded-full" style="width: 72%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-white font-medium">Big Data Processing</span>
+                                <span class="text-neon-green">65%</span>
+                            </div>
+                            <div class="h-2 bg-dark-700 rounded-full overflow-hidden">
+                                <div class="skill-bar w-[65%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scroll-reveal space-y-4">
+                    <div class="glass-card rounded-xl p-6 border-l-4 border-neon-green">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg bg-neon-green/10 text-neon-green">
+                                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Machine Learning</h3>
+                                <p class="text-gray-400 text-sm">Học có giám sát & Học không giám sát, Phương pháp học kết hợp, Tối ưu hóa mô hình, Kỹ thuật đặc trưng</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-xl p-6 border-l-4 border-neon-cyan">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg bg-neon-cyan/10 text-neon-cyan">
+                                <i data-lucide="network" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Deep Learning</h3>
+                                <p class="text-gray-400 text-sm">CNN, RNN, LSTM, NLP với Transformers</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-xl p-6 border-l-4 border-neon-purple">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg bg-neon-purple/10 text-neon-purple">
+                                <i data-lucide="database-backup" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-lg mb-2">Data Engineering</h3>
+                                <p class="text-gray-400 text-sm">Data cleaning, tối ưu hóa SQL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="relative z-10 py-24 px-6 bg-dark-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-neon-green font-mono text-lg block mb-2">04. Portfolio</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Dự án nổi bật</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Tập hợp các dự án của tôi về IT, Machine Learning, Data Analysis và Ứng dụng AI</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group scroll-reveal">
+                    <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon-green/20 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="wind" class="w-16 h-16 text-neon-green/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs px-2 py-1 rounded bg-neon-green/20 text-neon-green">Python</span>
+                            <span class="text-xs px-2 py-1 rounded bg-neon-purple/20 text-neon-purple">Random Forest</span>
+                            <span class="text-xs px-2 py-1 rounded bg-red-500/20 text-red-500">XGBoost</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Dự báo chỉ số chất lượng không khí (AQI)</h3>
+                        <p class="text-gray-400 text-sm mb-4">Mô hình học máy sử dụng XGBoost và Random Forest để dự báo Chỉ số Chất lượng Không khí (AQI) với độ chính xác 95%, kết hợp phân tích các chỉ số kỹ thuật.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-neon-green"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-neon-cyan"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                            <span class="text-xs text-gray-500">ML / Time Series</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group scroll-reveal">
+                    <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="film" class="w-16 h-16 text-neon-purple/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs px-2 py-1 rounded bg-neon-cyan/20 text-neon-cyan">Python</span>
+                            <span class="text-xs px-2 py-1 rounded bg-yellow-500/20 text-yellow-500">LSTM</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neon-purple transition-colors">Ứng dụng web dự báo chất lượng phim</h3>
+                        <p class="text-gray-400 text-sm mb-4">Tiến hành phân tích dữ liệu và xây dựng các mô hình dự đoán, đạt điểm F1 là 91% trên tập dữ liệu phim.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-neon-green"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-neon-cyan"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                            <span class="text-xs text-gray-500">DL / Classification</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden group scroll-reveal">
+                    <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="scan-eye" class="w-16 h-16 text-neon-cyan/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs px-2 py-1 rounded bg-orange-500/20 text-orange-500">CNN</span>
+                            <span class="text-xs px-2 py-1 rounded bg-blue-500/20 text-blue-500">OpenCV</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neon-cyan transition-colors">Nhận diện đối tượng</h3>
+                        <p class="text-gray-400 text-sm mb-4">Hệ thống phát hiện vật thể để phân biệt các loại hoa quả sử dụng YOLOv8 và OpenCV. Được triển khai trên các thiết bị biên.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-neon-green"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-neon-cyan"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                            <span class="text-xs text-gray-500">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden group scroll-reveal">
+                    <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-500/20 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="flame" class="w-16 h-16 text-pink-500/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs px-2 py-1 rounded bg-neon-green/20 text-neon-green">Game</span>
+                            <span class="text-xs px-2 py-1 rounded bg-neon-purple/20 text-neon-purple">Python</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-pink-500 transition-colors">Fighter Game</h3>
+                        <p class="text-gray-400 text-sm mb-4">Phát triển trò chơi đối kháng 2D bằng Python với thư viện Pygame, triển khai các tính năng di chuyển nhân vật, cơ chế tấn công, phát hiện va chạm và hệ thống sinh lực.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-neon-green"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-neon-cyan"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                            <span class="text-xs text-gray-500">Game</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="glass-card rounded-2xl overflow-hidden group scroll-reveal">
+                    <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-transparent"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="shield-alert" class="w-16 h-16 text-yellow-500/50"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="text-xs px-2 py-1 rounded bg-neon-cyan/20 text-neon-cyan">SVD</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-yellow-500 transition-colors">Phát hiện giả mạo</h3>
+                        <p class="text-gray-400 text-sm mb-4">Đã tiến hành nghiên cứu chuyên sâu về phân rã giá trị đơn (SVD) để phát hiện ảnh giả mạo.</p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex gap-3">
+                                <a href="#" class="text-gray-400 hover:text-neon-green"><i data-lucide="github" class="w-5 h-5"></i></a>
+                                <a href="#" class="text-gray-400 hover:text-neon-cyan"><i data-lucide="external-link" class="w-5 h-5"></i></a>
+                            </div>
+                            <span class="text-xs text-gray-500">AI / ML</span>
+                        </div>
+                    </div>
+                </div>
+
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="relative z-10 py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-neon-green font-mono text-lg block mb-2">05. Lộ trình</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Kinh nghiệm & Thực tập</h2>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 timeline-line rounded-full"></div>
+
+                <!-- Experience 1 -->
+                <div class="relative mb-12 scroll-reveal">
+                    <div class="md:flex items-center justify-between">
+                        <div class="md:w-5/12 md:text-right md:pr-8 mb-4 md:mb-0">
+                            <span class="text-neon-green font-mono text-sm">Tháng 4/2025 - Tháng 8/2025</span>
+                            <h3 class="text-xl font-bold text-white mt-1">Data Science Intern</h3>
+                            <p class="text-neon-purple font-medium">VNG Corporation</p>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-neon-green border-4 border-dark-900 z-10"></div>
+                        <div class="md:w-5/12 md:pl-8 ml-12 md:ml-0">
+                            <div class="glass-card rounded-xl p-6">
+                                <ul class="space-y-2 text-gray-400 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-neon-green mt-0.5 flex-shrink-0"></i>
+                                        <span>Đóng góp vào việc chuẩn bị tập dữ liệu huấn luyện, giúp cải thiện hiệu suất mô hình (mAP) thêm khoảng 5–10%</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-neon-green mt-0.5 flex-shrink-0"></i>
+                                        <span>Xây dựng quy trình phân công xử lý nhãn để xử lý hơn 2000 bản ghi mỗi ngày.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-neon-green mt-0.5 flex-shrink-0"></i>
+                                        <span>Cải thiện chất lượng bộ dữ liệu bằng cách sửa lỗi dữ liệu bị dán nhãn sai, tăng độ chính xác của chú thích lên khoảng 15–20%.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="relative z-10 py-24 px-6 bg-dark-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-neon-green font-mono text-lg block mb-2">06. Chứng chỉ</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Chứng chỉ nổi bật</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass-card rounded-xl p-6 scroll-reveal group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-blue-600/20 flex items-center justify-center text-blue-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Data Analytics - Introduction to Machine Learning</h3>
+                    <p class="text-gray-400 text-sm mb-4">Skill-based Certificate - Alison</p>
+                    <div class="flex items-center gap-2 text-neon-green text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Credential ID: 1631-57895798</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 scroll-reveal group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-yellow-600/20 flex items-center justify-center text-yellow-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Getting Started with Microsoft Word</h3>
+                    <p class="text-gray-400 text-sm mb-4">Coursera</p>
+                    <div class="flex items-center gap-2 text-neon-green text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Credential ID: T8JNK86ZEQRK</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 scroll-reveal group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-orange-600/20 flex items-center justify-center text-orange-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Foundational C# with Microsoft</h3>
+                    <p class="text-gray-400 text-sm mb-4">freeCodeCamp x Microsoft</p>
+                    <div class="flex items-center gap-2 text-neon-green text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Credential ID: nmdat-fcswm</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 scroll-reveal group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-600/20 flex items-center justify-center text-purple-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Designing and Formatting a Presentation in PowerPoint</h3>
+                    <p class="text-gray-400 text-sm mb-4">Coursera</p>
+                    <div class="flex items-center gap-2 text-neon-green text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Credential ID: Z6HBGPFIDA6V</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 scroll-reveal group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-600/20 flex items-center justify-center text-green-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Become a Data Scientist: Statistics for Data Science</h3>
+                    <p class="text-gray-400 text-sm mb-4">Simplilearn</p>
+                    <div class="flex items-center gap-2 text-neon-green text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Credential ID: 10123288</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 scroll-reveal group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-600/20 flex items-center justify-center text-cyan-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Create Your First Python Program From UST</h3>
+                    <p class="text-gray-400 text-sm mb-4">Coursera</p>
+                    <div class="flex items-center gap-2 text-neon-green text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Credential ID: 0XKJPC3Z3AV7</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl p-6 scroll-reveal group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-yellow-600/20 flex items-center justify-center text-yellow-500">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 font-mono">2026</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2 group-hover:text-neon-green transition-colors">Build a computer vision app with Azure Cognitive
+                        Services</h3>
+                    <p class="text-gray-400 text-sm mb-4">Microsoft</p>
+                    <div class="flex items-center gap-2 text-neon-green text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Credential ID: 4MBI759S0I79</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="relative z-10 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 scroll-reveal">
+                <span class="text-neon-green font-mono text-lg block mb-2">07. Blog</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Blog & Viết</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Chia sẻ kiến thức về AI và cuộc sống</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog1 -->
+                <a href="blog1.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,255,136,0.2)]">
+                        
+                        <!-- Top gradient -->
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                
+                            <!-- Tag -->
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-neon-green/20 text-neon-green text-xs">
+                                    Kinh tế
+                                </span>
+                            </div>
+                        </div>
+                
+                        <!-- Content -->
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>29/3/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>3 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-neon-green transition-colors">
+                                Kinh tế toàn cầu 2026: Tăng trưởng trong bóng tối của bất ổn
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                Thế giới bước vào 2026 với tâm thế thận trọng: AI bùng nổ là động lực, nhưng chiến tranh Trung Đông, nợ công leo thang...
+                            </p>
+                
+                            <!-- Read more -->
+                            <div class="inline-flex items-center text-neon-green text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog2 -->    
+                <a href="blog2.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(191,123,255,0.2)]">
+                        
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                            
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-neon-purple/20 text-neon-purple text-xs">
+                                    AI
+                                </span>
+                            </div>
+                        </div>
+                
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>7/4/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>4 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-neon-purple transition-colors">
+                                AI sẽ thay thế bao nhiêu việc làm? Các mô hình dự báo nói gì
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                300 triệu việc làm bị xóa sổ hay chỉ 2.5%? Tuỳ bạn hỏi ai — và quan trọng hơn, tuỳ họ đang đo cái gì. Đây là lý do tại sao các con số chênh nhau đến vậy, và con số nào đáng tin hơn.
+                            </p>
+                
+                            <div class="inline-flex items-center text-neon-purple text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Blog3 -->
+                <a href="blog3.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(0,255,255,0.15)]">
+                        
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                            
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-neon-cyan/20 text-neon-cyan text-xs">
+                                    Thiên văn học
+                                </span>
+                            </div>
+                        </div>
+                
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>10/4/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>7 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors">
+                                Hệ Mặt Trời: Những sự thật kỳ lạ hơn bạn tưởng
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                8 hành tinh, 1 ngôi sao, hàng trăm mặt trăng, và vô số thứ mà sách giáo khoa không kể. Hãy bay một vòng quanh hệ Mặt Trời — lần này đừng bỏ qua những chi tiết kỳ lạ nhất.
+                            </p>
+                
+                            <div class="inline-flex items-center text-neon-cyan text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                
+                    </article>
+                </a>
+
+                <!-- Blog4 -->    
+                <a href="blog4.html" class="block group scroll-reveal">
+                    <article class="glass-card rounded-2xl overflow-hidden transition duration-300 hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(255,136,0,0.2)]">
+                        
+                        <div class="h-48 bg-gradient-to-br from-dark-700 to-dark-800 relative">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent"></div>
+                            
+                            <div class="absolute bottom-4 left-4">
+                                <span class="px-3 py-1 rounded-full bg-[#ff8800]/20 text-[#ff8800] text-xs font-mono border border-[#ff8800]/20">
+                                    Thiên văn học
+                                </span>
+                            </div>
+                        </div>
+                
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 text-gray-400 text-sm mb-3">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                <span>19/4/2026</span>
+                                <span class="mx-2">•</span>
+                                <span>5 phút đọc</span>
+                            </div>
+                
+                            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#ff8800] transition-colors">
+                                Hố đen: Nơi vật lý sụp đổ và thời gian bẻ cong
+                            </h3>
+                
+                            <p class="text-gray-400 text-sm mb-4">
+                                Hố đen không phải "cái lỗ hút mọi thứ" như bạn thường hình dung. Chúng là vết nứt trong cấu trúc không-thời gian — nơi các phương trình vật lý chúng ta biết đều ngừng hoạt động. 
+                            </p>
+                
+                            <div class="inline-flex items-center text-[#ff8800] text-sm font-medium group-hover:gap-2 transition-all">
+                                <span>Đọc thêm</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            
+            <div class="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center mt-12 scroll-reveal">
+                <a href="blog-list.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl glass border border-neon-green/30 text-neon-green hover:bg-neon-green/10 hover:border-neon-green hover:shadow-[0_0_20px_rgba(0,255,136,0.2)] transition-all duration-300 group">
+                    <span>Xem tất cả bài viết</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative z-10 py-24 px-6 bg-dark-800/50">
+        <div class="max-w-4xl mx-auto text-center scroll-reveal">
+            <span class="text-neon-green font-mono text-lg block mb-2">08. Liên hệ</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Hãy cùng nhau hợp tác!</h2>
+            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
+                Hiện tại tôi đang tìm kiếm các cơ hội trong lĩnh vực Khoa học Dữ liệu. Cho dù bạn có câu hỏi hay chỉ muốn chào hỏi, tôi sẽ cố gắng hết sức để trả lời bạn sớm nhất có thể.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="mailto:nguyenminhdat6401@example.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-gradient-to-r from-neon-green to-neon-cyan text-dark-900 font-semibold hover:shadow-[0_0_30px_rgba(0,255,136,0.5)] transition-all transform hover:scale-105">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    <span>Say Hello</span>
+                </a>
+                <a href="#" class="inline-flex items-center gap-3 px-8 py-4 rounded-lg glass border border-neon-purple/50 text-white hover:border-neon-purple hover:shadow-[0_0_30px_rgba(184,41,247,0.3)] transition-all">
+                    <i data-lucide="download" class="w-5 h-5"></i>
+                    <span>Tải xuống CV</span>
+                </a>
+            </div>
+
+            <div class="flex justify-center space-x-8">
+                <a href="https://github.com/nguyenminhdat6401" class="group flex flex-col items-center gap-2 text-gray-400 hover:text-neon-green transition-colors">
+                    <div class="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:border-neon-green/50 transition-colors">
+                        <i data-lucide="code" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-sm">GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/datnguyenminh6401/" class="group flex flex-col items-center gap-2 text-gray-400 hover:text-neon-cyan transition-colors">
+                    <div class="w-12 h-12 rounded-full glass flex items-center justify-center group-hover:border-neon-cyan/50 transition-colors">
+                        <i data-lucide="briefcase" class="w-5 h-5"></i>
+                    </div>
+                    <span class="text-sm">LinkedIn</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8 mb-12">
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-8 mb-12 scroll-reveal">
+
+                <!-- Email -->
+                <a href="mailto:nguyenminhdat6401@gmail.com" 
+                   class="group flex items-center gap-3 px-6 py-3 rounded-lg glass border border-neon-green/30 
+                          text-gray-300 hover:text-white hover:border-neon-green 
+                          hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] 
+                          transform hover:scale-105 transition-all duration-300"
+                   style="transition-delay: 0.1s">
+                    
+                    <i data-lucide="mail" class="w-5 h-5 text-neon-green group-hover:scale-110 transition-transform"></i>
+                    <span class="text-sm">nguyenminhdat6401@gmail.com</span>
+                </a>
+    
+    
+            </div>
+
+    </section>
+
+    
+    <!-- Footer -->
+    <footer class="relative z-10 py-8 px-6 border-t border-white/5">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-gray-500 text-sm font-mono">
+                <span class="text-neon-green">&lt;</span>
+                <span>Built with passion by Nguyen Minh Dat</span>
+                <span class="text-neon-purple">/&gt;</span>
+            </div>
+            <div class="text-gray-600 text-sm">
+                © 2026 All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+
+        // Animate skill bars on scroll
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.skill-bar');
+                    bars.forEach(bar => {
+                        const width = bar.style.width || bar.classList.toString().match(/w-\[(\d+%)\]/)?.[1] || '0%';
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width.replace('w-[', '').replace(']', '');
+                        }, 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('#skills').forEach((el) => skillObserver.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar glass effect on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.classList.add('bg-dark-900/90');
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.classList.remove('bg-dark-900/90');
+            }
+        });
+    </script>
+</body>
+</html>
